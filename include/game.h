@@ -15,7 +15,7 @@ class Game {
     std::string title;
   protected:
   private:
-    sf::RenderWindow * window;
+    sf::RenderWindow window;
     void update();
     void render();
     void run();
