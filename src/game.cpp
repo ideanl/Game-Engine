@@ -5,6 +5,7 @@ Game::Game(int g_width = 800, int g_height = 600, std::string g_title = "--Title
   height = g_height;
   title = g_title;
   window.create(sf::VideoMode(width, height), title);
+  eventManager.setWindowPointer(window);
   start();
 }
 
@@ -15,7 +16,7 @@ void Game::start() {
 }
 
 void Game::update() {
-
+  eventManager.checkWindow();
 }
 
 void Game::render() {

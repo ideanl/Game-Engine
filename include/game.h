@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "eventmanager.h"
 
 class Game {
   public:
@@ -16,6 +17,7 @@ class Game {
   protected:
   private:
     sf::RenderWindow window;
+    EventManager eventManager;
     void update();
     void render();
     void run();
