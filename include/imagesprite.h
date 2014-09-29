@@ -1,11 +1,11 @@
 #ifndef IMAGESPRITE_H
 #define IMAGESPRITE_H
 
-#include "sprite.h"
+#include "basesprite.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-class ImageSprite :public Sprite {
+class ImageSprite :public BaseSprite {
   public:
     ImageSprite();
     void create(sf::RenderWindow& window, std::string s_textureFile, int s_xPos,int s_yPos, int s_xVelocity, int s_yVelocity);
