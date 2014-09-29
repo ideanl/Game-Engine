@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "../include/manager.h"
 
 class Game {
   public:
@@ -16,6 +17,7 @@ class Game {
   protected:
   private:
     sf::RenderWindow window;
+    LevelManager levelManager;
     void update();
     void render();
     void run();
