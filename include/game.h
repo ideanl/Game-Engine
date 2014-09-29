@@ -17,7 +17,7 @@ class Game {
   protected:
   private:
     sf::RenderWindow window;
-    LevelManager levelManager;
+    Manager<Level> levelManager;
     void update();
     void render();
     void run();

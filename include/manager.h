@@ -7,29 +7,22 @@
 #include "../include/scene.h"
 #include "../include/level.h"
 
-class Manager {
+template <class manager_type> class Manager {
   public:
-    //map<name,  scenes;
-    Scene* currentScene;
+    manager_type* current;
+    template <class data_type> void add(std::string type);
+    void set(std::string type);
+    std::map<std::string, manager_type*> objects;
   protected:
   private:
 };
 
-class LevelManager {
-  public:
-    LevelManager();
-    template <class level_type> void addLevel(std::string type);
-    template <class level_type> void setLevel(std::string type);
-    std::map<std::string, Level*> levels;
-    Level* current;
-};
-
-template <class level_type> void LevelManager::addLevel(std::string type) {
-  levels[type] = new level_type;
+template <class manager_type> template <class data_type> void Manager<manager_type>::add(std::string type) {
+  objects[type] = new data_type;
+  objects[type]->name = type;
 }
 
-template <class level_type> void LevelManager::setLevel(std::string type) {
-  current = &levels[type];
+template <class manager_type> void Manager<manager_type>::set(std::string type) {
+  current = objects[type];
 }
-
 #endif

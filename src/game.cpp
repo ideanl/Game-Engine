@@ -7,7 +7,13 @@ Game::Game(int g_width = 800, int g_height = 600, std::string g_title = "--Title
   height = g_height;
   title = g_title;
   window.create(sf::VideoMode(width, height), title);
-  levelManager.addLevel<Floor1>("Floor1");
+  /* EXAMPLES OF LEVELMANAGER
+  levelManager.add<Floor1>("Floor1");
+  levelManager.add<Floor1>("Floor2");
+  levelManager.set("Floor1");
+  std::cout << levelManager.current->name << std::endl;
+  levelManager.set("Floor2");
+  std::cout << levelManager.current->name << std::endl; */
   start();
 }
 
