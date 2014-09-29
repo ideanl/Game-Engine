@@ -5,6 +5,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "eventmanager.h"
+#include "../include/manager.h"
 
 class Game {
   public:
@@ -18,6 +19,7 @@ class Game {
   private:
     sf::RenderWindow window;
     EventManager eventManager;
+    Manager<Level> levelManager;
     void update();
     void render();
     void run();
