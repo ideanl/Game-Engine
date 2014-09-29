@@ -20,7 +20,16 @@ class LevelManager {
     LevelManager();
     template <class level_type> void addLevel(std::string type);
     template <class level_type> void setLevel(std::string type);
-    std::map<std::string, Level> levels;
+    std::map<std::string, Level*> levels;
     Level* current;
 };
+
+template <class level_type> void LevelManager::addLevel(std::string type) {
+  levels[type] = new level_type;
+}
+
+template <class level_type> void LevelManager::setLevel(std::string type) {
+  current = &levels[type];
+}
+
 #endif
