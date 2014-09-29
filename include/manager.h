@@ -5,7 +5,7 @@
 #include <string>
 #include <map>
 #include "../include/scene.h"
-#include "../include/level.h"
+#include "../include/menulevel.h"
 
 template <class manager_type> class Manager {
   public:
