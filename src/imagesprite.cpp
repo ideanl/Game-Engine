@@ -19,6 +19,7 @@ void ImageSprite::create(sf::RenderWindow& window, std::string s_textureFile, in
 	sprite.setTexture(texture);
 	sprite.setPosition(x_Pos, y_Pos);
 	}
+ setBoundaries<sf::Sprite>(sprite);
 }
 
 void ImageSprite::checkEvent() {
