@@ -4,6 +4,10 @@ BaseSprite::BaseSprite() {
 
 }
 
+void BaseSprite::create() {
+
+}
+
 BaseSprite::~BaseSprite() {
 
 }

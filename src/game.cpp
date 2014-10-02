@@ -1,4 +1,5 @@
 #include "../include/game.h"
+#include <iostream>
 
 Game::Game(int g_width = 800, int g_height = 600, std::string g_title = "--Title--") {
   width = g_width;

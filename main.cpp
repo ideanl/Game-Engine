@@ -18,7 +18,7 @@ enum scene {
 }; */
 
 int main(int argc, const char* argv[])
-{
+{	
   Game game(800, 600, "-----Title------");
   return 0;
 }

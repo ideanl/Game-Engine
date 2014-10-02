@@ -6,7 +6,7 @@
 class BaseSprite {
   public:
     BaseSprite();
-    virtual void create() = 0;
+    virtual void create();
     virtual void checkEvent() = 0;
     virtual void update() = 0;
     virtual void render() = 0;
