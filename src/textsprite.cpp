@@ -1,9 +1,11 @@
 #include "../include/textsprite.h"
 
+// constructer
 TextSprite::TextSprite() {
 
 }
 
+// creates the sprite in memory, sets the attributes
 void TextSprite::create(sf::RenderWindow window, std::string s_messageString, std::string s_fontString, int s_charSize, sf::Color s_color, int s_xPos, int s_yPos) {
 	windowPointer = &window;
 	messageString = s_messageString;
@@ -12,20 +14,36 @@ void TextSprite::create(sf::RenderWindow window, std::string s_messageString, st
 	color = s_color;
 	x_Pos = s_xPos;
 	y_Pos = s_yPos;
+
+	// checks to make sure the font loads
+	if(!font.loadFromFile("../res/" + fontString))
+		std::cerr << "Font " << fontString << " failed to load" << std::endl;
+	else {
+		text.setFont(font);
+		text.setString(messageString);
+		text.setCharacterSize(charSize);
+		text.setColor(color);
+		// gets the width and height of the global bounding rectangle
+		setBoundaries<sf::Text>(text);
+	}
 }
 
+// checks for events
 void TextSprite::checkEvent() {
 
 }
 
+// updates the sprite
 void TextSprite::update() {
 
 }
 
+// draws the sprite
 void TextSprite::render() {
-
+	windowPointer->draw(text);
 }
 
+// destructer
 TextSprite::~TextSprite() {
 
 }

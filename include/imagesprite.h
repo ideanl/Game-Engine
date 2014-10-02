@@ -5,19 +5,26 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+// class for image sprites, sprite with images
 class ImageSprite :public BaseSprite {
   public:
+  	// constructer
     ImageSprite();
+	// creates the sprite in memory, sets all its atttributes
     void create(sf::RenderWindow& window, std::string s_textureFile, int s_xPos,int s_yPos, int s_xVelocity, int s_yVelocity);
-    void checkEvent();
+    // checks for events
+	void checkEvent();
+	// updates the sprite
     void update();
+	// draws the sprite
     void render();
+	// destructer
     ~ImageSprite();
   protected:
+  	sf::Texture texture;
+	sf::Sprite sprite;
+	std::string textureFile;
   private:
-    sf::Texture texture;
-    sf::Sprite sprite;
-    std::string textureFile;
 };
 
 #endif
