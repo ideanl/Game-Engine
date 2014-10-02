@@ -1,5 +1,7 @@
 #include "../include/game.h"
 #include <iostream>
+#include "../include/manager.h"
+#include "../include/menulevel.h"
 
 Game::Game(int g_width = 800, int g_height = 600, std::string g_title = "--Title--") {
   width = g_width;
@@ -7,6 +9,13 @@ Game::Game(int g_width = 800, int g_height = 600, std::string g_title = "--Title
   title = g_title;
   window.create(sf::VideoMode(width, height), title);
   eventManager.setWindowPointer(window);
+  /* EXAMPLES OF LEVELMANAGER
+  levelManager.add<Floor1>("Floor1");
+  levelManager.add<Floor1>("Floor2");
+  levelManager.set("Floor1");
+  std::cout << levelManager.current->name << std::endl;
+  levelManager.set("Floor2");
+  std::cout << levelManager.current->name << std::endl; */
   start();
 }
 
