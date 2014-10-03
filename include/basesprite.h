@@ -16,6 +16,8 @@ class BaseSprite {
     virtual void update() = 0;
 	// draws the sprite
     virtual void render() = 0;
+	// moves the sprite
+	virtual void move(int s_xPos, int s_yPos) = 0;
 	// gets and sets the rectangle surrounding the sprite
 	template<class Type>
 	void setBoundaries(Type& object) {

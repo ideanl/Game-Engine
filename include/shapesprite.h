@@ -12,7 +12,9 @@ class ShapeSprite :public BaseSprite {
 		ShapeSprite();
 		// creates the sprite in memory, sets the attributes
 		void create(sf::RenderWindow& window, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, std::string s_shapeType, float s_param1, float s_param2, sf::Color s_color);
-		// chekcs for events
+		// moves the sprite
+		void move(int s_xPos, int s_yPos);
+		// checks for events
 		void checkEvent();
 		// updates the sprite
 		void update();

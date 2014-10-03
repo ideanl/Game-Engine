@@ -28,6 +28,12 @@ void ImageSprite::create(sf::RenderWindow& window, std::string s_textureFile, in
  setBoundaries<sf::Sprite>(sprite);
 }
 
+// moves the sprite
+void ImageSprite::move(int s_xPos, int s_yPos) {
+	x_Pos = s_xPos;
+	y_Pos = s_yPos;
+	sprite.move(x_Pos, y_Pos);
+}
 // checks for events
 void ImageSprite::checkEvent() {
 

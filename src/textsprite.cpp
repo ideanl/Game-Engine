@@ -23,9 +23,17 @@ void TextSprite::create(sf::RenderWindow window, std::string s_messageString, st
 		text.setString(messageString);
 		text.setCharacterSize(charSize);
 		text.setColor(color);
+		text.setPosition(x_Pos, y_Pos);
 		// gets the width and height of the global bounding rectangle
 		setBoundaries<sf::Text>(text);
 	}
+}
+
+// moves the sprite
+void TextSprite::move(int s_xPos, int s_yPos) {
+	x_Pos = s_xPos;
+	y_Pos = s_yPos;
+	text.setPosition(x_Pos, y_Pos);
 }
 
 // checks for events

@@ -37,6 +37,13 @@ void ShapeSprite::create(sf::RenderWindow& window, int s_xPos, int s_yPos, int s
 	}
 }
 
+// moves the sprite
+void ShapeSprite::move(int s_xPos, int s_yPos) {
+	x_Pos = s_xPos;
+	y_Pos = s_yPos;
+	circle_shape.setPosition(x_Pos, y_Pos);
+	rectShape.setPosition(x_Pos, y_Pos);
+}
 // checks for events
 void ShapeSprite::checkEvent() {
 
