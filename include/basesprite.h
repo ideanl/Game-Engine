@@ -18,6 +18,10 @@ class BaseSprite {
     virtual void render() = 0;
 	// moves the sprite
 	virtual void move(int s_xPos, int s_yPos) = 0;
+	// reutns the gobal bouding rectangle width
+	int getWidth();
+	// returns the gobla bouding rectange height
+	int getHeight();
 	// gets and sets the rectangle surrounding the sprite
 	template<class Type>
 	void setBoundaries(Type& object) {
