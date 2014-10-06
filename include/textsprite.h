@@ -11,7 +11,7 @@ class TextSprite :public BaseSprite{
 		// constructer
 		TextSprite();
 		// creates sprite in memory, sets all attributes
-		void create(sf::RenderWindow window, std::string s_messageString, std::string s_fontString, int s_charSize, sf::Color s_color, int s_xPos, int s_yPos);
+		void create(sf::RenderWindow* window, std::string s_messageString, std::string s_fontString, int s_charSize, sf::Color s_color, int s_xPos, int s_yPos);
 		// moves the sprite
 		void move(int s_xPos, int s_yPos);
 		// checks for events

@@ -6,8 +6,8 @@ TextSprite::TextSprite() {
 }
 
 // creates the sprite in memory, sets the attributes
-void TextSprite::create(sf::RenderWindow window, std::string s_messageString, std::string s_fontString, int s_charSize, sf::Color s_color, int s_xPos, int s_yPos) {
-	windowPointer = &window;
+void TextSprite::create(sf::RenderWindow* window, std::string s_messageString, std::string s_fontString, int s_charSize, sf::Color s_color, int s_xPos, int s_yPos) {
+	windowPointer = window;
 	messageString = s_messageString;
 	fontString = s_fontString;
 	charSize = s_charSize;

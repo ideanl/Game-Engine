@@ -11,7 +11,7 @@ class ImageSprite :public BaseSprite {
   	// constructer
     ImageSprite();
 	// creates the sprite in memory, sets all its atttributes
-    void create(sf::RenderWindow& window, std::string s_textureFile, int s_xPos,int s_yPos, int s_xVelocity, int s_yVelocity);
+    void create(sf::RenderWindow* window, std::string s_textureFile, int s_xPos,int s_yPos, int s_xVelocity, int s_yVelocity);
     // moves the sprite
 	void move(int s_xPos, int s_yPos);
 	// checks for events

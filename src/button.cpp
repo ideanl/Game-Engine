@@ -17,15 +17,33 @@ void Button::create(sf::RenderWindow window, std::string s_messageString, std::s
 	y_Pos = s_yPos;
 	x_Velocity = s_xVelocity;
 	y_Velocity = s_yVelocity;
-	image.create(*windowPointer, textureFile, x_Pos, y_Pos, x_Velocity, y_Velocity);
-	text.create(#windowPointer, messageString, fontString, charSize, color, x_Pos, y_Pos);
-	x_textPos = x_Pos + (image.getWidth() - text.getWidth()) / 2;
-	y_textPos = y_Pos + (image.getHeight() - text.getHeight()) / 2;
+	image.create(windowPointer, textureFile, x_Pos, y_Pos, x_Velocity, y_Velocity);
+	text.create(windowPointer, messageString, fontString, charSize, color, x_Pos, y_Pos);
+	imageWidth = image.getWidth();
+	imageHeight = image.getHeight();
+	textWidth = text.getWidth();
+	textHeight = text.getHeight();
+	x_textPos = x_Pos + (imageWidth - textWidth) / 2;
+	y_textPos = y_Pos + (imageHeight - textHeight) / 2;
 	text.move(x_textPos, y_textPos);
 }
 // checks for events
 void Button::checkEvent() {
+	// if(isClicked() {
+	// do this 
+	// }
+}
 
+// tells if button was clicked
+bool Button::isClicked() {
+	mousePos = mouse.getPosition();
+	if(mouse.isButtonPressed(sf::Mouse::Left)) {
+		if(mousePos.x > x_Pos && mousePos.x < x_Pos + imageWidth && mousePos.y > y_Pos && mousePos.y < y_Pos + imageHeight)
+			return true;
+		else 
+			return false;
+	}
+	return false;
 }
 
 // updates the button

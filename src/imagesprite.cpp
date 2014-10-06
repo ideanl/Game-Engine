@@ -7,8 +7,8 @@ ImageSprite::ImageSprite() {
 }
 
 // creates the sprite in memory, sets the attributes
-void ImageSprite::create(sf::RenderWindow& window, std::string s_textureFile, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity) {
-  windowPointer = &window;
+void ImageSprite::create(sf::RenderWindow* window, std::string s_textureFile, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity) {
+  windowPointer = window;
   x_Pos = s_xPos;
   y_Pos = s_yPos;
   x_Velocity = s_xVelocity;
