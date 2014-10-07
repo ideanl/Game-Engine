@@ -6,7 +6,8 @@
 class MenuLevel {
   public:
     std::string name;
-
+    void update();
+    void render();
 };
 
 //Class for Levels
