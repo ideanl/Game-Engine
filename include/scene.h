@@ -4,5 +4,7 @@
 class Scene {
   public:
     std::string name;
+    void update();
+    void render();
 };
 #endif

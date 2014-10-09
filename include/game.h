@@ -19,7 +19,7 @@ class Game {
   private:
     sf::RenderWindow window;
     EventManager eventManager;
-    Manager<Level> levelManager;
+    Manager<MenuLevel> menuLevelManager;
     void update();
     void render();
     void run();

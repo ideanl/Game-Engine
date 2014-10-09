@@ -7,15 +7,17 @@ Game::Game(int g_width = 800, int g_height = 600, std::string g_title = "--Title
   width = g_width;
   height = g_height;
   title = g_title;
+
+  //Create window
   window.create(sf::VideoMode(width, height), title);
+
+  //set EventManager window reference
   eventManager.setWindowPointer(window);
-  /* EXAMPLES OF LEVELMANAGER
-  levelManager.add<Floor1>("Floor1");
-  levelManager.add<Floor1>("Floor2");
-  levelManager.set("Floor1");
-  std::cout << levelManager.current->name << std::endl;
-  levelManager.set("Floor2");
-  std::cout << levelManager.current->name << std::endl; */
+
+  //Create MenuLevel classes
+  menuLevelManager.add<StartMenu>("StartMenu");
+  //Set MenuLevel class
+  menuLevelManager.set("StartMenu");
   start();
 }
 
