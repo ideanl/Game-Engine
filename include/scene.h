@@ -7,4 +7,7 @@ class Scene {
     void update();
     void render();
 };
+
+class StartScene: public Scene {
+};
 #endif
