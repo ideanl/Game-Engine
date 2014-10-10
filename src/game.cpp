@@ -29,10 +29,12 @@ void Game::start() {
 
 void Game::update() {
   eventManager.checkWindow();
+  menuLevelManager.update();
 }
 
 void Game::render() {
   window.clear(sf::Color::Black);
+  menuLevelManager.render();
   window.display();
 }
 

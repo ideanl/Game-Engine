@@ -4,8 +4,6 @@
 #include <iostream>
 #include <string>
 #include <map>
-#include "../include/scene.h"
-#include "../include/menulevel.h"
 
 template <class manager_type> class Manager {
   public:
@@ -13,6 +11,8 @@ template <class manager_type> class Manager {
     template <class data_type> void add(std::string type);
     void set(std::string type);
     std::map<std::string, manager_type*> objects;
+    void update();
+    void render();
   protected:
   private:
 };
@@ -24,5 +24,13 @@ template <class manager_type> template <class data_type> void Manager<manager_ty
 
 template <class manager_type> void Manager<manager_type>::set(std::string type) {
   current = objects[type];
+}
+
+template <class manager_type> void Manager<manager_type>::update() {
+  current->update();
+}
+
+template <class manager_type> void Manager<manager_type>::render() {
+  current->update();
 }
 #endif
