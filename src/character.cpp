@@ -5,6 +5,7 @@ Character::Character() {
 
 }
 
+<<<<<<< HEAD
 // creates the character in memory, sets all its attributes
 void Character::create(sf::RenderWindow& window, std::string s_textureFile, int s_xPos, int s_yPs, int s_xVelocity, int s_yVelocity) {
 	// setting all the member variables
@@ -19,6 +20,8 @@ void Character::create(sf::RenderWindow& window, std::string s_textureFile, int 
 	image.create(windowPointer, textureFile, x_Pos, s_Pos, x_Velocity, y_Velocity);
 }
 
+=======
+>>>>>>> staging
 // checks for events
 void Character::checkEvent() {
 
@@ -31,10 +34,17 @@ void Character::update() {
 
 // draws the character
 void Character::render() {
+<<<<<<< HEAD
 	image.draw();
 }
 
 // destructer
+=======
+
+} 
+
+// deconstructer
+>>>>>>> staging
 Character::~Character() {
 
 }
