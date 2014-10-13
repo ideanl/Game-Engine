@@ -10,8 +10,10 @@ class MenuLevel {
     std::string name;
     void update();
     void render();
+    void setWindow(sf::RenderWindow* windowPointer);
   protected:
     Manager<Scene> sceneManager;
+    sf::RenderWindow* window;
 };
 
 //Class for Levels
