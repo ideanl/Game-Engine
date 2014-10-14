@@ -8,12 +8,7 @@ ShapeSprite::ShapeSprite() {
 
 // creates the sprite in memory, sets all the attributes
 void ShapeSprite::create(sf::RenderWindow& window, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, std::string s_shapeType, float s_param1, float s_param2, sf::Color s_color) {
-<<<<<<< HEAD
-	
 	// setting all the member variables
-=======
-	// sets all the member variables
->>>>>>> staging
 	windowPointer = &window;
 	x_Pos = s_xPos;
 	y_Pos = s_yPos;
