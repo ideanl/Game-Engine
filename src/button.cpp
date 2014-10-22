@@ -7,10 +7,7 @@ Button::Button() {
 
 // creates the button in memory, sets the attributes
 void Button::create(sf::RenderWindow window, std::string s_messageString, std::string s_fontString, std::string s_textureFile, int s_charSize, sf::Color s_color, int s_xVelocity, int s_yVelocity, int s_xPos, int s_yPos) {
-<<<<<<< HEAD
-
-=======
->>>>>>> staging
+	
 	// setting all the member variables
 	windowPointer = &window; 
 	messageString = s_messageString;
@@ -23,15 +20,9 @@ void Button::create(sf::RenderWindow window, std::string s_messageString, std::s
 	x_Velocity = s_xVelocity;
 	y_Velocity = s_yVelocity;
 	
-<<<<<<< HEAD
 	// creating the button image
 	image.create(windowPointer, textureFile, x_Pos, y_Pos, x_Velocity, y_Velocity);
-	// creating the button text
-=======
-	// creates the button image
-	image.create(windowPointer, textureFile, x_Pos, y_Pos, x_Velocity, y_Velocity);
 	// creates the button text
->>>>>>> staging
 	text.create(windowPointer, messageString, fontString, charSize, color, x_Pos, y_Pos);
 	
 	// getting button paramaters
@@ -40,11 +31,7 @@ void Button::create(sf::RenderWindow window, std::string s_messageString, std::s
 	textWidth = text.getWidth();
 	textHeight = text.getHeight();
 	
-<<<<<<< HEAD
 	// centering the button text
-=======
-	// centers the text within the button image
->>>>>>> staging
 	x_textPos = x_Pos + (imageWidth - textWidth) / 2;
 	y_textPos = y_Pos + (imageHeight - textHeight) / 2;
 	text.move(x_textPos, y_textPos);

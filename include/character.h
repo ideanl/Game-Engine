@@ -20,6 +20,7 @@ class Character :public ImageSprite{
 		~Character();
 	protected:
 	private:
+		ImageSprite image;
 };
 
 #endif

@@ -28,7 +28,7 @@ void Game::start() {
 }
 
 void Game::update() {
-  eventManager.checkWindow();
+  eventManager.check();
   menuLevelManager.update();
 }
 

@@ -4,10 +4,22 @@ EventManager::EventManager() {
 
 }
 
+// sets the window Pointer 
 void EventManager::setWindowPointer(sf::RenderWindow& window) {
   windowPointer = &window;
 }
 
+// sets the current scene
+void EventManager::setScene(Scene* current) {
+	currentScene = current;
+}
+
+// checks for all events in the game
+void EventManager::check() {
+	checkWindow();
+	checkScene();
+	// checkCharacter();
+}
 void EventManager::checkWindow() {
   while(windowPointer->pollEvent(event)) {
     switch(event.type) {
@@ -24,12 +36,9 @@ void EventManager::checkWindow() {
   }
 }
 
-/*
-void EventManager::checkLevel(Level& level) {
-  levelPointer = &level;
-  levelPointer->checkEvent();
+void EventManager::checkScene() {
+	//currentScene->checkEvent();
 }
-*/
 
 /*
 void EventManager::checkCharacter(character& character) {

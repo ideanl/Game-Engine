@@ -16,7 +16,7 @@ void Character::create(sf::RenderWindow& window, std::string s_textureFile, int 
 	y_Velocity = s_yVelocity;
 
 	// creating the image
-	image.create(windowPointer, textureFile, x_Pos, s_Pos, x_Velocity, y_Velocity);
+	image.create(windowPointer, textureFile, x_Pos, y_Pos, x_Velocity, y_Velocity);
 }
 
 // checks for events
@@ -31,7 +31,7 @@ void Character::update() {
 
 // draws the character
 void Character::render() {
-	image.draw();
+	image.render();
 }
 
 // deconstructer

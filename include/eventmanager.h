@@ -3,23 +3,29 @@
 
 #include <SFML/Graphics.hpp>
 #include "../include/menulevel.h"
+#include "scene.h"
 
 class EventManager {
   public:
     EventManager();
-    void setWindowPointer(sf::RenderWindow& window);
+    // sets the window Pointer
+	void setWindowPointer(sf::RenderWindow& window);
+	// sets the current scene
+	void setScene(Scene* current);
+	// checks for events in the game
+	void check();
     // checks to see if a window event occurs
     void checkWindow();
-    // runs the level checkEvent loop
-    // void checkLevel(Level& level);
+	// checks the scene to see if an event occurs
+	void checkScene();
     // runs the mainCharacter checkEvent loop
     // void checkCharacter(Character& character);
     ~EventManager();
   protected:
   private:
     sf::RenderWindow* windowPointer;
-    // Level* levelPointer;
-    // Character* characterPointer;
+	Scene* currentScene;
+	// Character* characterPointer;
     sf::Event event;
 };
 
