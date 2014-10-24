@@ -27,6 +27,7 @@ template <class manager_type> void Manager<manager_type>::setWindowPointer(sf::R
 template <class manager_type> template <class data_type> void Manager<manager_type>::add(std::string type) {
   objects[type] = new data_type;
   objects[type]->setWindowPointer(windowPointer);
+  objects[type]->create();
   objects[type]->name = type;
 }
 

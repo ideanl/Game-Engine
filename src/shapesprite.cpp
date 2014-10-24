@@ -19,7 +19,7 @@ void ShapeSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s
 	color = s_color;
 
 	// for circles
-	if(shapeType == "circle" || "Circle") {
+	if(shapeType == "circle" || shapeType == "Circle") {
 		circle_shape.setRadius(param1);
 		circle_shape.setFillColor(color);
 		circle_shape.setPosition(x_Pos, y_Pos);
@@ -28,7 +28,7 @@ void ShapeSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s
 	}
 
 	// for rectangles
-	else if(shapeType == "rectangle" || "Rectangle") {
+	else if(shapeType == "rectangle" || shapeType == "Rectangle") {
 		rect_shape.setSize(sf::Vector2f(param1, param2));
 		rect_shape.setFillColor(color);
 		rect_shape.setPosition(x_Pos, y_Pos);
@@ -56,11 +56,9 @@ void ShapeSprite::update() {
 
 // draws the sprite
 void ShapeSprite::render() {
-  std::cout << windowPointer->getSize().x << std::endl;
-  std::cout << "HEREEE1" << std::endl;
-	if(shapeType == "circle" || "Circle") 
+	if(shapeType == "circle" || shapeType == "Circle") 
 		windowPointer->draw(circle_shape);
-	if(shapeType == "rectangle" || "Rectangle") 
+	if(shapeType == "rectangle" || shapeType == "Rectangle") 
 		windowPointer->draw(rect_shape);
 }
 

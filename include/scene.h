@@ -7,6 +7,7 @@
 class Scene {
   public:
     std::string name;
+	virtual void create() = 0;
     void update();
     void render();
     void setWindowPointer(sf::RenderWindow* window);
@@ -17,6 +18,6 @@ class Scene {
 
 class StartScene: public Scene {
   public:
-    StartScene();
+	void create();
 };
 #endif
