@@ -1,7 +1,8 @@
 #include "../include/menulevel.h"
 
-void MenuLevel::setWindow(sf::RenderWindow* windowPointer) {
-  window = windowPointer;
+void MenuLevel::setWindowPointer(sf::RenderWindow* window) {
+  windowPointer = window;
+  sceneManager.setWindowPointer(windowPointer);
 }
 
 void MenuLevel::update() {

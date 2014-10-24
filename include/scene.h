@@ -9,7 +9,9 @@ class Scene {
     std::string name;
     void update();
     void render();
+    void setWindowPointer(sf::RenderWindow* window);
   protected:
+    sf::RenderWindow* windowPointer;
     std::map<std::string, BaseSprite*> sprites;
 };
 

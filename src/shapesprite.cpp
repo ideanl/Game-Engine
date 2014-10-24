@@ -3,12 +3,12 @@
 #include <SFML/Graphics.hpp>
 
 // constructer
-ShapeSprite::ShapeSprite(Game& game) {
-  window = game.window;
+ShapeSprite::ShapeSprite() {
 }
 
 // creates the sprite in memory, sets all the attributes
-void ShapeSprite::create(int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, std::string s_shapeType, float s_param1, float s_param2, sf::Color s_color) {
+void ShapeSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, std::string s_shapeType, float s_param1, float s_param2, sf::Color s_color) {
+  windowPointer = window;
 	x_Pos = s_xPos;
 	y_Pos = s_yPos;
 	x_Velocity = s_xVelocity;
@@ -56,6 +56,8 @@ void ShapeSprite::update() {
 
 // draws the sprite
 void ShapeSprite::render() {
+  std::cout << windowPointer->getSize().x << std::endl;
+  std::cout << "HEREEE1" << std::endl;
 	if(shapeType == "circle" || "Circle") 
 		windowPointer->draw(circle_shape);
 	if(shapeType == "rectangle" || "Rectangle") 
