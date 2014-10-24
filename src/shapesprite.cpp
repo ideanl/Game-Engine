@@ -1,6 +1,9 @@
 #include "../include/shapesprite.h"
 #include "../include/game.h"
 #include <SFML/Graphics.hpp>
+#include <ctype.h>
+
+std::string lowerCase(std::string s_text);
 
 // constructer
 ShapeSprite::ShapeSprite() {
@@ -15,11 +18,11 @@ void ShapeSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s
 	y_Velocity = s_yVelocity;
 	param1 = s_param1;
 	param2 = s_param2;
-	shapeType = s_shapeType;
+	shapeType = lowerCase(s_shapeType);
 	color = s_color;
 
 	// for circles
-	if(shapeType == "circle" || shapeType == "Circle") {
+	if(shapeType == "circle") {
 		circle_shape.setRadius(param1);
 		circle_shape.setFillColor(color);
 		circle_shape.setPosition(x_Pos, y_Pos);
@@ -28,7 +31,7 @@ void ShapeSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s
 	}
 
 	// for rectangles
-	else if(shapeType == "rectangle" || shapeType == "Rectangle") {
+	else if(shapeType == "rectangle") {
 		rect_shape.setSize(sf::Vector2f(param1, param2));
 		rect_shape.setFillColor(color);
 		rect_shape.setPosition(x_Pos, y_Pos);
@@ -56,13 +59,21 @@ void ShapeSprite::update() {
 
 // draws the sprite
 void ShapeSprite::render() {
-	if(shapeType == "circle" || shapeType == "Circle") 
+	if(shapeType == "circle") 
 		windowPointer->draw(circle_shape);
-	if(shapeType == "rectangle" || shapeType == "Rectangle") 
+	if(shapeType == "rectangle") 
 		windowPointer->draw(rect_shape);
 }
 
 // destructer
 ShapeSprite::~ShapeSprite() {
 
+}
+
+std::string lowerCase(std::string s_text) {
+	std::string text = s_text;
+	for(int i = 0; i < text.length(); i++) {
+		text[i] = tolower(text[i]);
+	}
+	return text;
 }
