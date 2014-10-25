@@ -3,6 +3,7 @@
 #include "../include/game.h"
 #include "../include/scene.h"
 #include "../include/shapesprite.h"
+#include "../include/textsprite.h"
 
 void Scene::setWindowPointer(sf::RenderWindow* window) {
   windowPointer = window;
@@ -10,9 +11,9 @@ void Scene::setWindowPointer(sf::RenderWindow* window) {
 
 void StartScene::create() {
   sprites["background"] = new ShapeSprite();
-  //sprites["header"] = new TextSprite();
+  sprites["header"] = new TextSprite();
   static_cast<ShapeSprite*>(sprites["background"])->create(windowPointer, 0, 0, 0, 0, "rectangle", windowPointer->getSize().x, windowPointer->getSize().y, sf::Color::Red);
-  //static_cast<TextSprite*>(sprites["header"])->create(windowPointer, "Welcome to SAI", <file>, 24, sf::Color::Black, windowPointer->getSize().x / 2 , 50);
+  static_cast<TextSprite*>(sprites["header"])->create(windowPointer, "Welcome to SAI", "sixty.ttf", 24, sf::Color::Black, windowPointer->getSize().x / 2 , 50);
 }
 
 void Scene::update() {
