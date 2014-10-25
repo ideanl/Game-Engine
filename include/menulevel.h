@@ -12,6 +12,7 @@ class MenuLevel {
     void render();
     void setWindowPointer(sf::RenderWindow* window);
 	virtual void create() = 0;
+    std::string state;
   protected:
     sf::RenderWindow* windowPointer;
     Manager<Scene> sceneManager;
