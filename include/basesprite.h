@@ -9,7 +9,7 @@ class BaseSprite {
   	// construter
     BaseSprite();
 	// creates the button in memory, stores all its attributes
-    virtual void create();
+  virtual void create();
 	// checks for events
 	virtual void checkEvent() = 0;
 	// updates the sprite position and such

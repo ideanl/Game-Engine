@@ -2,6 +2,7 @@
 #include <iostream>
 #include "../include/manager.h"
 #include "../include/menulevel.h"
+#include <SFML/Graphics.hpp>
 
 Game::Game(int g_width = 800, int g_height = 600, std::string g_title = "--Title--") {
   width = g_width;
@@ -11,13 +12,16 @@ Game::Game(int g_width = 800, int g_height = 600, std::string g_title = "--Title
   //Create window
   window.create(sf::VideoMode(width, height), title);
 
-  //set EventManager window reference
-  eventManager.setWindowPointer(window);
+  menuLevelManager.setWindowPointer(&window);
 
   //Create MenuLevel classes
   menuLevelManager.add<StartMenu>("StartMenu");
   //Set MenuLevel class
   menuLevelManager.set("StartMenu");
+
+  //set EventManager window reference
+  eventManager.setWindowPointer(window);
+
   start();
 }
 

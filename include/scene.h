@@ -1,23 +1,25 @@
 #ifndef SCENE_H
 #define SCENE_H
 #include <string>
-#include "imagesprite.h"
-#include <SFML/Graphics.hpp>
+#include <vector>
+#include <map>
+#include "basesprite.h"
 
 class Scene {
   public:
     std::string name;
+	virtual void create() = 0;
     void update();
     void render();
-	protected: 
-		sf::RenderWindow* windowPointer;
+    void setWindowPointer(sf::RenderWindow* window);
+
+  protected:
+    sf::RenderWindow* windowPointer;
+    std::map<std::string, BaseSprite*> sprites;
 };
 
 class StartScene: public Scene {
-	public:
-		void create(sf::RenderWindow& window);
-		void render();
-	private:
-		ImageSprite character;		
+  public:
+    void create();
 };
 #endif

@@ -18,7 +18,7 @@ void TextSprite::create(sf::RenderWindow* window, std::string s_messageString, s
 	y_Pos = s_yPos;
 
 	// checks to make sure the font loads
-	if(!font.loadFromFile("../res/" + fontString))
+	if(!font.loadFromFile("res/" + fontString))
 		std::cerr << "Font " << fontString << " failed to load" << std::endl;
 	else {
 		// creates the sprite 
