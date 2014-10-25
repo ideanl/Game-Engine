@@ -15,14 +15,16 @@ class Game {
     int width;
     int height;
     std::string title;
+    sf::RenderWindow window;
   protected:
   private:
-    sf::RenderWindow window;
     EventManager eventManager;
     Manager<MenuLevel> menuLevelManager;
     void update();
     void render();
     void run();
 };
+
+extern Game game;
 
 #endif 
