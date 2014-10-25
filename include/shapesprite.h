@@ -25,7 +25,6 @@ class ShapeSprite :public BaseSprite {
 		~ShapeSprite();
 	protected:
 	private:
-    sf::RenderWindow* windowPointer;
 		std::string shapeType;
 		int param1, param2;
 		sf::RectangleShape rect_shape;
