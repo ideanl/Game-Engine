@@ -2,7 +2,8 @@
 
 // constructer
 TextSprite::TextSprite() {
-
+  transformables.push_back(textPointer);
+  textPointer = &text;
 }
 
 // creates the sprite in memory, sets the attributes
@@ -35,9 +36,7 @@ void TextSprite::create(sf::RenderWindow* window, std::string s_messageString, s
 
 // moves the sprite
 void TextSprite::move(int s_xPos, int s_yPos) {
-	x_Pos = s_xPos;
-	y_Pos = s_yPos;
-	text.setPosition(x_Pos, y_Pos);
+	text.setPosition(s_xPos, s_xPos);
 }
 
 // checks for events
@@ -55,6 +54,15 @@ void TextSprite::render() {
 	windowPointer->draw(text);
 }
 
+// returns the text
+sf::Text TextSprite::getText() {
+  return text;
+}
+
+// returns the drawables
+std::vector<sf::Transformable*> TextSprite::getTransformables() {
+  return transformables;
+}
 // destructer
 TextSprite::~TextSprite() {
 

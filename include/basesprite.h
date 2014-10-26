@@ -13,9 +13,9 @@ class BaseSprite {
 	// checks for events
 	virtual void checkEvent() = 0;
 	// updates the sprite position and such
-    virtual void update() = 0;
+  virtual void update() = 0;
 	// draws the sprite
-    virtual void render() = 0;
+  virtual void render() = 0;
 	// moves the sprite
 	virtual void move(int s_xPos, int s_yPos) = 0;
 	// reutns the gobal bouding rectangle width
@@ -23,12 +23,22 @@ class BaseSprite {
 	// returns the gobla bouding rectange height
 	int getHeight();
 	// gets and sets the rectangle surrounding the sprite
-	template<class Type>
-	void setBoundaries(Type& object) {
+	template <class Type> void setBoundaries(Type& object) {
 		sf::FloatRect boundaries = object.getGlobalBounds();
 		width = boundaries.width;
 		height = boundaries.height;
 	}
+  // moves the sprite
+  /*template <class drawables> void move(int s_xPos, int s_yPos, drawables object1, drawables object2 = 0, drawables object3 = 0) {
+    object1.setPosition(s_xPos, s_yPos);
+    object2.setPosition(s_xPos, s_yPos);
+    object3.setPositoin(s_xPos, s_yPos);
+  }*/
+  template <class s_type> void move(int s_xPos, int s_yPos, s_type object) {
+    for(int i = 0; i < object->getTransformables().size(); i++) {
+      object->getTransformables()[i]->setPosition(s_xPos, s_yPos);
+    }
+  }
 	// destructer
     ~BaseSprite();
   protected:

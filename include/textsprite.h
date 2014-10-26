@@ -4,6 +4,7 @@
 #include "basesprite.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <vector>
 
 // class for sprites that are just text
 class TextSprite :public BaseSprite{
@@ -20,16 +21,22 @@ class TextSprite :public BaseSprite{
 		void update();
 		// draws the sprite
 		void render();
+    // returns the text
+    sf::Text getText();
+    // returns the drawables
+    std::vector<sf::Transformable*> getTransformables();
 		// destructer
 		~TextSprite();
 	protected:
 	private:
 		std::string messageString, fontString;
-		int charSize; 
+		int charSize;
 
 		sf::Color color;
 		sf::Font font;
 		sf::Text text;
+    sf::Transformable* textPointer;
+    std::vector<sf::Transformable*> transformables;
 };
 
 #endif
