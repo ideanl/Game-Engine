@@ -16,6 +16,7 @@ template <class manager_type> class Manager {
     void set(std::string type);
     std::map<std::string, manager_type*> objects;
     std::vector<std::string> names;
+    std::string state;
     void next();
     void update();
     void render();
@@ -44,7 +45,10 @@ template <class manager_type> void Manager<manager_type>::set(std::string type) 
 
 template <class manager_type> void Manager<manager_type>::next() {
   index++;
-  current = objects[*index];
+  if (index != names.end())
+    current = objects[*index];
+  else
+    state = "finished";
 }
 
 template <class manager_type> void Manager<manager_type>::update() {

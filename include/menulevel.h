@@ -13,16 +13,16 @@ class MenuLevel {
     void setWindowPointer(sf::RenderWindow* window);
 	virtual void create() = 0;
     std::string state;
+    Manager<Scene> sceneManager;
   protected:
     sf::RenderWindow* windowPointer;
-    Manager<Scene> sceneManager;
     sf::RenderWindow* window;
 };
 
 //Class for Levels
 class Level: public MenuLevel  {
 	public:
-	  void create();
+	  virtual void create() = 0;
 };
 
 //Class for Menus
@@ -36,5 +36,10 @@ class Menu: public MenuLevel  {
 class StartMenu: public Menu { 
   public:
 	void create();
+};
+
+class Level1: public Level {
+  public:
+    void create();
 };
 #endif
