@@ -4,7 +4,6 @@
 #include "../include/scene.h"
 #include "../include/shapesprite.h"
 #include "../include/textsprite.h"
-#include <iostream>
 
 void Scene::setWindowPointer(sf::RenderWindow* window) {
   windowPointer = window;

@@ -6,12 +6,11 @@ Button::Button() {
 }
 
 // creates the button in memory, sets the attributes
-void Button::create(sf::RenderWindow window, std::string s_messageString, std::string s_fontString, std::string s_textureFile, int s_charSize, sf::Color s_color, int s_xVelocity, int s_yVelocity, int s_xPos, int s_yPos) {
-	
+void Button::create(sf::RenderWindow* window, std::string s_messageString, std::string s_fontString, std::string s_textureFile, int s_charSize, sf::Color s_color, int s_xVelocity, int s_yVelocity, int s_xPos, int s_yPos) {
 	// setting all the member variables
-	windowPointer = &window; 
-	messageString = s_messageString;
+	windowPointer = window; 
 	fontString = s_fontString;
+	messageString = s_messageString;
 	textureFile = s_textureFile;
 	charSize = s_charSize;
 	color = s_color;

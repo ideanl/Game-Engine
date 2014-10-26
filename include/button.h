@@ -13,7 +13,7 @@ class Button :public BaseSprite{
 		// constructer
 		Button();
 		// creates the button in memory, sets the attributes
-		void create(sf::RenderWindow window, std::string s_messageString, std::string s_fontString, std::string s_textrueFile, int s_charSize, sf::Color s_color, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity);
+		void create(sf::RenderWindow* window, std::string s_messageString, std::string s_fontString, std::string s_textureFile, int s_charSize, sf::Color s_color, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity);
 		// checks for events
 		void checkEvent();
 		// tells if button was clicked

@@ -12,7 +12,7 @@ class Scene {
     void update();
     void render();
     void setWindowPointer(sf::RenderWindow* window);
-
+    std::string state;
   protected:
     sf::RenderWindow* windowPointer;
     std::map<std::string, BaseSprite*> sprites;
