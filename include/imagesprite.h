@@ -26,6 +26,7 @@ class ImageSprite :public BaseSprite {
   	sf::Texture texture;
 	sf::Sprite sprite;
 	std::string textureFile;
+	sf::Transformable* spritePointer;
   private:
 };
 

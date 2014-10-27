@@ -2,6 +2,8 @@
 #define SPRITE_H
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include <vector>
 
 // The Base class for all other sprites
 class BaseSprite {
@@ -22,6 +24,8 @@ class BaseSprite {
 	int getWidth();
 	// returns the gobla bouding rectange height
 	int getHeight();
+	// returns the drawables
+	std::vector<sf::Transformable*> getTransformables();
 	// gets and sets the rectangle surrounding the sprite
 	template <class Type> void setBoundaries(Type& object) {
 		sf::FloatRect boundaries = object.getGlobalBounds();
@@ -29,14 +33,9 @@ class BaseSprite {
 		height = boundaries.height;
 	}
   // moves the sprite
-  /*template <class drawables> void move(int s_xPos, int s_yPos, drawables object1, drawables object2 = 0, drawables object3 = 0) {
-    object1.setPosition(s_xPos, s_yPos);
-    object2.setPosition(s_xPos, s_yPos);
-    object3.setPositoin(s_xPos, s_yPos);
-  }*/
   template <class s_type> void move(int s_xPos, int s_yPos, s_type object) {
     for(int i = 0; i < object->getTransformables().size(); i++) {
-      object->getTransformables()[i]->setPosition(s_xPos, s_yPos);
+	  object->getTransformables()[i]->setPosition(s_xPos, s_yPos);
     }
   }
 	// destructer
@@ -45,6 +44,7 @@ class BaseSprite {
     int x_Velocity, y_Velocity, x_Pos, y_Pos, width, height;
     sf::RenderWindow* windowPointer;
 	sf::FloatRect boundaries;
+	std::vector<sf::Transformable*> transformables;
   private:
 };
 

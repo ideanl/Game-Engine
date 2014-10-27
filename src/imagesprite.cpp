@@ -3,7 +3,8 @@
 
 // constructer
 ImageSprite::ImageSprite() {
-
+	spritePointer = &sprite;
+	transformables.push_back(spritePointer);
 }
 
 // creates the sprite in memory, sets the attributes

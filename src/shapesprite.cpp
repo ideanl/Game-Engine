@@ -7,11 +7,15 @@ std::string lowerCase(std::string s_text);
 
 // constructer
 ShapeSprite::ShapeSprite() {
+	rectanglePointer = &rect_shape;
+	circlePointer = &circle_shape;
+	transformables.push_back(rectanglePointer);
+	transformables.push_back(circlePointer);
 }
 
-// creates the sprite in memory, sets all the attributes
-void ShapeSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, std::string s_shapeType, float s_param1, float s_param2, sf::Color s_color) {
-  windowPointer = window;
+void ShapeSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, std::string s_shapeType, float s_param1, float s_param2, sf::Vector3f s_color) {
+	// sets all the member variables
+	windowPointer = window;
 	x_Pos = s_xPos;
 	y_Pos = s_yPos;
 	x_Velocity = s_xVelocity;
@@ -19,7 +23,9 @@ void ShapeSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s
 	param1 = s_param1;
 	param2 = s_param2;
 	shapeType = lowerCase(s_shapeType);
-	color = s_color;
+	color.r = s_color.x;
+	color.g = s_color.y;
+	color.b = s_color.z;
 
 	// for circles
 	if(shapeType == "circle") {

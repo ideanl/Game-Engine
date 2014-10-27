@@ -2,19 +2,21 @@
 
 // constructer
 TextSprite::TextSprite() {
-  transformables.push_back(textPointer);
   textPointer = &text;
+  transformables.push_back(textPointer);
 }
 
 // creates the sprite in memory, sets the attributes
-void TextSprite::create(sf::RenderWindow* window, std::string s_messageString, std::string s_fontString, int s_charSize, sf::Color s_color, int s_xPos, int s_yPos) {
+void TextSprite::create(sf::RenderWindow* window, std::string s_messageString, std::string s_fontString, int s_charSize, sf::Vector3f s_color, int s_xPos, int s_yPos) {
 	
 	// settting all the memeber variables
 	windowPointer = window;
 	messageString = s_messageString;
 	fontString = s_fontString;
 	charSize = s_charSize;
-	color = s_color;
+	color.r = s_color.x;
+	color.g = s_color.y;
+	color.b = s_color.z;
 	x_Pos = s_xPos;
 	y_Pos = s_yPos;
 
@@ -54,15 +56,6 @@ void TextSprite::render() {
 	windowPointer->draw(text);
 }
 
-// returns the text
-sf::Text TextSprite::getText() {
-  return text;
-}
-
-// returns the drawables
-std::vector<sf::Transformable*> TextSprite::getTransformables() {
-  return transformables;
-}
 // destructer
 TextSprite::~TextSprite() {
 
