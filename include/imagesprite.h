@@ -20,13 +20,17 @@ class ImageSprite :public BaseSprite {
     void update();
 	// draws the sprite
     void render();
+	// returns the sprite
+	sf::Sprite* getSpriteAddress();
 	// destructer
     ~ImageSprite();
   protected:
   	sf::Texture texture;
 	sf::Sprite sprite;
 	std::string textureFile;
+	sf::Transformable* spritePointer;
   private:
+  	sf::Sprite* spriteAddress;
 };
 
 #endif

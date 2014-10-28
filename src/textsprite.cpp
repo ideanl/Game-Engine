@@ -2,18 +2,22 @@
 
 // constructer
 TextSprite::TextSprite() {
-
+  textPointer = &text;
+  textAddress = &text;
+  transformables.push_back(textPointer);
 }
 
 // creates the sprite in memory, sets the attributes
-void TextSprite::create(sf::RenderWindow* window, std::string s_messageString, std::string s_fontString, int s_charSize, sf::Color s_color, int s_xPos, int s_yPos) {
+void TextSprite::create(sf::RenderWindow* window, std::string s_messageString, std::string s_fontString, int s_charSize, sf::Vector3f s_color, int s_xPos, int s_yPos) {
 	
 	// settting all the memeber variables
 	windowPointer = window;
 	messageString = s_messageString;
 	fontString = s_fontString;
 	charSize = s_charSize;
-	color = s_color;
+	color.r = s_color.x;
+	color.g = s_color.y;
+	color.b = s_color.z;
 	x_Pos = s_xPos;
 	y_Pos = s_yPos;
 
@@ -35,9 +39,7 @@ void TextSprite::create(sf::RenderWindow* window, std::string s_messageString, s
 
 // moves the sprite
 void TextSprite::move(int s_xPos, int s_yPos) {
-	x_Pos = s_xPos;
-	y_Pos = s_yPos;
-	text.setPosition(x_Pos, y_Pos);
+	text.setPosition(s_xPos, s_xPos);
 }
 
 // checks for events
@@ -53,6 +55,11 @@ void TextSprite::update() {
 // draws the sprite
 void TextSprite::render() {
 	windowPointer->draw(text);
+}
+
+// returns the sprite
+sf::Text* TextSprite::getTextAddress() {
+	return textAddress;
 }
 
 // destructer
