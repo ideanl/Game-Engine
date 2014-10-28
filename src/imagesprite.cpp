@@ -4,6 +4,7 @@
 // constructer
 ImageSprite::ImageSprite() {
 	spritePointer = &sprite;
+	spriteAddress = &sprite;
 	transformables.push_back(spritePointer);
 }
 
@@ -51,6 +52,11 @@ void ImageSprite::update() {
 // draws the sprite
 void ImageSprite::render() {
   windowPointer->draw(sprite);
+}
+
+// returns the sprite
+sf::Sprite* ImageSprite::getSpriteAddress() {
+	return spriteAddress;
 }
 
 // destructer

@@ -34,9 +34,9 @@ class BaseSprite {
 	}
   // moves the sprite
   template <class s_type> void move(int s_xPos, int s_yPos, s_type object) {
-    for(int i = 0; i < object->getTransformables().size(); i++) {
-	  object->getTransformables()[i]->setPosition(s_xPos, s_yPos);
-    }
+    for(int i = 0; i < object->getTransformables().size(); i++) { 
+	 object->getTransformables()[i]->setPosition(s_xPos, s_yPos);
+	 }
   }
 	// destructer
     ~BaseSprite();

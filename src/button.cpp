@@ -2,7 +2,10 @@
 
 // constructer
 Button::Button() {
-
+	textSpritePointer = text.getTextAddress();
+	imageSpritePointer = image.getSpriteAddress();
+	transformables.push_back(textSpritePointer);
+	transformables.push_back(imageSpritePointer);
 }
 
 // creates the button in memory, sets the attributes

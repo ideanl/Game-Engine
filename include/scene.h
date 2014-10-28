@@ -8,11 +8,14 @@
 class Scene {
   public:
     std::string name;
+	// creates the scene in memory
 	virtual void create() = 0;
+	// updates the scene
     void update();
+	// draws the scene
     void render();
+	// sets the window pointer
     void setWindowPointer(sf::RenderWindow* window);
-
   protected:
     sf::RenderWindow* windowPointer;
     std::map<std::string, BaseSprite*> sprites;
@@ -20,6 +23,7 @@ class Scene {
 
 class StartScene: public Scene {
   public:
+  	// creates the start scene in memory
     void create();
 };
 #endif

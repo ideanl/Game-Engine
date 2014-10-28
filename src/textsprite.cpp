@@ -3,6 +3,7 @@
 // constructer
 TextSprite::TextSprite() {
   textPointer = &text;
+  textAddress = &text;
   transformables.push_back(textPointer);
 }
 
@@ -54,6 +55,11 @@ void TextSprite::update() {
 // draws the sprite
 void TextSprite::render() {
 	windowPointer->draw(text);
+}
+
+// returns the sprite
+sf::Text* TextSprite::getTextAddress() {
+	return textAddress;
 }
 
 // destructer

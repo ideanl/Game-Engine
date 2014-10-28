@@ -20,6 +20,8 @@ class ImageSprite :public BaseSprite {
     void update();
 	// draws the sprite
     void render();
+	// returns the sprite
+	sf::Sprite* getSpriteAddress();
 	// destructer
     ~ImageSprite();
   protected:
@@ -28,6 +30,7 @@ class ImageSprite :public BaseSprite {
 	std::string textureFile;
 	sf::Transformable* spritePointer;
   private:
+  	sf::Sprite* spriteAddress;
 };
 
 #endif

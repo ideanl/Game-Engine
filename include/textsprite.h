@@ -20,6 +20,8 @@ class TextSprite :public BaseSprite{
 		void update();
 		// draws the sprite
 		void render();
+		// returns the text
+		sf::Text* getTextAddress();
 		// destructer
 		~TextSprite();
 	protected:
@@ -31,6 +33,7 @@ class TextSprite :public BaseSprite{
 		sf::Font font;
 		sf::Text text;
     	sf::Transformable* textPointer;
+		sf::Text* textAddress;
 };
 
 #endif

@@ -33,6 +33,8 @@ class Button :public BaseSprite{
 		std::string messageString, fontString, textureFile; 
 		int charSize, x_textPos, y_textPos, imageWidth, imageHeight, textWidth, textHeight;
 		sf::Vector3f color;
+		sf::Transformable* textSpritePointer;
+		sf::Transformable* imageSpritePointer;
 		// add pointers in header and source for textsprite and imagesprite
 };
 

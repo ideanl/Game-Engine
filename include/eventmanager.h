@@ -20,6 +20,7 @@ class EventManager {
 	void checkScene();
     // runs the mainCharacter checkEvent loop
     // void checkCharacter(Character& character);
+	// destructor 
     ~EventManager();
   protected:
   private:
