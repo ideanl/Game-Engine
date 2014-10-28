@@ -19,6 +19,11 @@ class Scene {
 
 class StartScene: public Scene {
   public:
-	void create();
+    void create();
+};
+
+class MainScene: public Scene {
+  public:
+    void create();
 };
 #endif

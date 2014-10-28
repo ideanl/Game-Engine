@@ -7,6 +7,7 @@ void MenuLevel::setWindowPointer(sf::RenderWindow* window) {
 
 void MenuLevel::update() {
   sceneManager.update();
+  sceneUpdate();
 }
 
 void MenuLevel::render() {
