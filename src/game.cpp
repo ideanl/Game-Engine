@@ -33,7 +33,6 @@ void Game::start() {
 }
 
 void Game::update() {
-  eventManager.checkWindow();
   menuLevelManager.update();
   if(menuLevelManager.state == "finished")
     window.close();

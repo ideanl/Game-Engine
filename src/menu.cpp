@@ -7,5 +7,4 @@ void StartMenu::create() {
 }
 
 void StartMenu::menuLevelUpdate() {
-  state = "exiting";
 }

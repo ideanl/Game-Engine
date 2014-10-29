@@ -8,19 +8,16 @@ class EventManager {
   public:
     EventManager();
     void setWindowPointer(sf::RenderWindow& window);
-    // checks to see if a window event occurs
-    void checkWindow();
-    // runs the level checkEvent loop
-    // void checkLevel(Level& level);
-    // runs the mainCharacter checkEvent loop
-    // void checkCharacter(Character& character);
+    void addEvent(sf::Event::EventType event = sf::Event::Closed, sf::Keyboard::Key key = sf::Keyboard::Unknown);
+    std::vector<sf::Keyboard::Key> checkKeys();
+    std::vector<sf::Event::EventType> checkEvents();
     ~EventManager();
   protected:
   private:
     sf::RenderWindow* windowPointer;
-    // Level* levelPointer;
-    // Character* characterPointer;
     sf::Event event;
+    std::vector<sf::Event::EventType> event_list;
+    std::vector<sf::Keyboard::Key> key_list;
 };
 
 #endif
