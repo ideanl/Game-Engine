@@ -5,6 +5,11 @@ void MenuLevel::setWindowPointer(sf::RenderWindow* window) {
   sceneManager.setWindowPointer(windowPointer);
 }
 
+void MenuLevel::setEventManager(EventManager* eventMan) {
+  eventManager = eventMan;
+  sceneManager.setEventManager(eventManager);
+}
+
 void MenuLevel::update() {
   sceneManager.update();
   menuLevelUpdate();

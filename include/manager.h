@@ -7,6 +7,7 @@
 #include <map>
 #include <vector>
 #include <algorithm>
+#include "eventmanager.h"
 
 template <class manager_type> class Manager {
   public:
@@ -21,8 +22,10 @@ template <class manager_type> class Manager {
     void update();
     void render();
     void setWindowPointer(sf::RenderWindow* window);
+    void setEventManager(EventManager* eventMan);
   protected:
     sf::RenderWindow* windowPointer;
+    EventManager* eventManager;
   private:
 };
 
@@ -30,10 +33,15 @@ template <class manager_type> void Manager<manager_type>::setWindowPointer(sf::R
   windowPointer = window;
 }
 
+template <class manager_type> void Manager<manager_type>::setEventManager(EventManager* eventMan) {
+  eventManager = eventMan;
+}
+
 template <class manager_type> template <class data_type> void Manager<manager_type>::add(std::string type) {
   names.push_back(type);
   objects[type] = new data_type;
   objects[type]->setWindowPointer(windowPointer);
+  objects[type]->setEventManager(eventManager);
   objects[type]->create();
   objects[type]->name = type;
 }

@@ -2,12 +2,11 @@
 #define EVENTMANAGER_H
 
 #include <SFML/Graphics.hpp>
-#include "../include/menulevel.h"
 
 class EventManager {
   public:
     EventManager();
-    void setWindowPointer(sf::RenderWindow& window);
+    void setWindowPointer(sf::RenderWindow* window);
     void addEvent(sf::Event::EventType event = sf::Event::Closed, sf::Keyboard::Key key = sf::Keyboard::Unknown);
     std::vector<sf::Keyboard::Key> checkKeys();
     std::vector<sf::Event::EventType> checkEvents();

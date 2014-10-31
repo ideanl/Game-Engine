@@ -3,6 +3,7 @@
 #include <string>
 #include "manager.h"
 #include "scene.h"
+#include "eventmanager.h"
 
 // Parent Class for menus and levels
 class MenuLevel {
@@ -11,13 +12,14 @@ class MenuLevel {
     void update();
     void render();
     void setWindowPointer(sf::RenderWindow* window);
+    void setEventManager(EventManager* eventMan);
     virtual void create() = 0;
     virtual void menuLevelUpdate() = 0;
     std::string state;
     Manager<Scene> sceneManager;
   protected:
     sf::RenderWindow* windowPointer;
-    sf::RenderWindow* window;
+    EventManager* eventManager;
 };
 
 //Class for Levels

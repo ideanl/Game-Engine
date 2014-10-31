@@ -13,6 +13,7 @@ Game::Game(int g_width = 800, int g_height = 600, std::string g_title = "--Title
   window.create(sf::VideoMode(width, height), title);
 
   menuLevelManager.setWindowPointer(&window);
+  eventManager.setWindowPointer(&window);
 
   //Create MenuLevel classes
   menuLevelManager.add<StartMenu>("StartMenu");
@@ -21,8 +22,6 @@ Game::Game(int g_width = 800, int g_height = 600, std::string g_title = "--Title
   menuLevelManager.set("StartMenu");
 
   //set EventManager window reference
-  eventManager.setWindowPointer(window);
-
   start();
 }
 

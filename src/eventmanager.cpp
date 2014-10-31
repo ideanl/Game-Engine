@@ -1,20 +1,17 @@
+#include <iostream>
 #include "../include/eventmanager.h"
 
 EventManager::EventManager() {
-  addEvent(sf::Event::Closed);
+  //addEvent(sf::Event::Closed);
 }
 
-void EventManager::setWindowPointer(sf::RenderWindow& window) {
-  windowPointer = &window;
+void EventManager::setWindowPointer(sf::RenderWindow* window) {
+  windowPointer = window;
 }
 
 void EventManager::addEvent(sf::Event::EventType event, sf::Keyboard::Key key) {
-  if (event != sf::Event::Closed) {
-    event_list.push_back(event);
-  }
-  else if (key != sf::Keyboard::Unknown) {
-    key_list.push_back(key);
-  }
+  event_list.push_back(event);
+  key_list.push_back(key);
 }
 
 std::vector<sf::Keyboard::Key> EventManager::checkKeys() {
@@ -48,6 +45,7 @@ std::vector<sf::Event::EventType> EventManager::checkEvents() {
   }
   return final_events;
 }
+
 /*
 void EventManager::checkWindow() {
   while(windowPointer->pollEvent(event)) {

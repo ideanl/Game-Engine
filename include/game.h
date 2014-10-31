@@ -5,7 +5,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "eventmanager.h"
-#include "../include/manager.h"
+#include "menulevel.h"
+#include "manager.h"
 
 class Game {
   public:
