@@ -1,10 +1,5 @@
 #include "../include/button.h"
 
-// constructer
-Button::Button() {
-
-}
-
 // creates the button in memory, sets the attributes
 void Button::create(sf::RenderWindow* window, std::string s_messageString, std::string s_fontString, std::string s_textureFile, int s_charSize, sf::Color s_color, int s_xVelocity, int s_yVelocity, int s_xPos, int s_yPos) {
 	// setting all the member variables
@@ -47,6 +42,13 @@ bool Button::isClicked() {
 	return false;
 }
 
+// moves the button
+void Button::move(int s_xPos, int s_yPos) {
+  image.move(s_xPos, s_yPos);
+  x_textPos = s_xPos + (imageWidth - textWidth) / 2;
+  y_textPos = s_yPos + (imageHeight - textHeight) / 2;
+  text.move(x_textPos, y_textPos);
+}
 // updates the button
 void Button::update() {
 

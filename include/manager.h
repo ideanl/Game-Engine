@@ -17,8 +17,6 @@ template <class manager_type> class Manager {
     void set(std::string type);
     std::map<std::string, manager_type*> objects;
     std::vector<std::string> names;
-    std::string state;
-    void next();
     void update();
     void render();
     void setWindowPointer(sf::RenderWindow* window);
@@ -51,17 +49,7 @@ template <class manager_type> void Manager<manager_type>::set(std::string type) 
   index = std::find(names.begin(), names.end(), type);
 }
 
-template <class manager_type> void Manager<manager_type>::next() {
-  index++;
-  if (index != names.end())
-    current = objects[*index];
-  else
-    state = "finished";
-}
-
 template <class manager_type> void Manager<manager_type>::update() {
-  if (current->state == "exiting")
-    next();
   current->update();
 }
 

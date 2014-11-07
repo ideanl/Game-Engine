@@ -26,6 +26,4 @@ class Game {
     void run();
 };
 
-extern Game game;
-
 #endif 

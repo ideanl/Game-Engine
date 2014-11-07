@@ -14,10 +14,11 @@ Game::Game(int g_width = 800, int g_height = 600, std::string g_title = "--Title
 
   menuLevelManager.setWindowPointer(&window);
   eventManager.setWindowPointer(&window);
-
+  menuLevelManager.setEventManager(&eventManager);
   //Create MenuLevel classes
   menuLevelManager.add<StartMenu>("StartMenu");
   menuLevelManager.add<Level1>("Level1");
+
   //Set MenuLevel class
   menuLevelManager.set("StartMenu");
 
@@ -33,11 +34,6 @@ void Game::start() {
 
 void Game::update() {
   menuLevelManager.update();
-  if(menuLevelManager.state == "finished")
-    window.close();
-  else
-    if (menuLevelManager.current->sceneManager.state == "finished")
-      menuLevelManager.next();
 }
 
 void Game::render() {
