@@ -1,7 +1,16 @@
 #include "../include/button.h"
 
+// constructer
+Button::Button() {
+	textSpritePointer = text.getTextAddress();
+	imageSpritePointer = image.getSpriteAddress();
+	transformables.push_back(textSpritePointer);
+	transformables.push_back(imageSpritePointer);
+}
+
 // creates the button in memory, sets the attributes
-void Button::create(sf::RenderWindow* window, std::string s_messageString, std::string s_fontString, std::string s_textureFile, int s_charSize, sf::Color s_color, int s_xVelocity, int s_yVelocity, int s_xPos, int s_yPos) {
+void Button::create(sf::RenderWindow* window, std::string s_messageString, std::string s_fontString, std::string s_textureFile, int s_charSize, sf::Vector3f s_color, int s_xVelocity, int s_yVelocity, int s_xPos, int s_yPos) {
+	
 	// setting all the member variables
 	windowPointer = window; 
 	fontString = s_fontString;
@@ -13,16 +22,24 @@ void Button::create(sf::RenderWindow* window, std::string s_messageString, std::
 	y_Pos = s_yPos;
 	x_Velocity = s_xVelocity;
 	y_Velocity = s_yVelocity;
+	
+	// creating the button image
 	image.create(windowPointer, textureFile, x_Pos, y_Pos, x_Velocity, y_Velocity);
+	// creates the button text
 	text.create(windowPointer, messageString, fontString, charSize, color, x_Pos, y_Pos);
+	
+	// getting button paramaters
 	imageWidth = image.getWidth();
 	imageHeight = image.getHeight();
 	textWidth = text.getWidth();
 	textHeight = text.getHeight();
+	
+	// centering the button text
 	x_textPos = x_Pos + (imageWidth - textWidth) / 2;
 	y_textPos = y_Pos + (imageHeight - textHeight) / 2;
 	text.move(x_textPos, y_textPos);
 }
+
 // checks for events
 void Button::checkEvent() {
 	// if(isClicked() {
@@ -56,7 +73,8 @@ void Button::update() {
 
 // draws the button
 void Button::render() {
-
+	image.render();
+	text.render();
 }
 
 // destructer

@@ -9,6 +9,16 @@ void EventManager::setWindowPointer(sf::RenderWindow* window) {
   windowPointer = window;
 }
 
+// sets the window Pointer 
+void EventManager::setWindowPointer(sf::RenderWindow& window) {
+  windowPointer = &window;
+}
+
+// sets the current scene
+/*void EventManager::setScene(Scene* current) {
+	currentScene = current;
+}*/
+
 void EventManager::addEvent(sf::Event::EventType event, sf::Keyboard::Key key) {
   event_list.push_back(event);
   key_list.push_back(key);
@@ -45,37 +55,6 @@ std::vector<sf::Event::EventType> EventManager::checkEvents() {
   }
   return final_events;
 }
-
-/*
-void EventManager::checkWindow() {
-  while(windowPointer->pollEvent(event)) {
-    switch(event.type) {
-      case sf::Event::Closed:
-        windowPointer->close();
-        break;
-      case sf::Event::KeyPressed:
-        if(event.key.code == sf::Keyboard::Escape)
-          windowPointer->close();
-        break;
-      default:
-        break;
-    }
-  }
-} */
-
-/*
-void EventManager::checkLevel(Level& level) {
-  levelPointer = &level;
-  levelPointer->checkEvent();
-}
-*/
-
-/*
-void EventManager::checkCharacter(character& character) {
-  characterPointer = &character;
-  characterPointer->checkEvent();
-}
-*/
 
 EventManager::~EventManager() {
 

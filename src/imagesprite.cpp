@@ -3,11 +3,15 @@
 
 // constructer
 ImageSprite::ImageSprite() {
-
+	spritePointer = &sprite;
+	spriteAddress = &sprite;
+	transformables.push_back(spritePointer);
 }
 
 // creates the sprite in memory, sets the attributes
 void ImageSprite::create(sf::RenderWindow* window, std::string s_textureFile, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity) {
+  
+  // setting all the member variables
   windowPointer = window;
   x_Pos = s_xPos;
   y_Pos = s_yPos;
@@ -25,7 +29,7 @@ void ImageSprite::create(sf::RenderWindow* window, std::string s_textureFile, in
 	sprite.setPosition(x_Pos, y_Pos);
 	}
 	// finds the width and height of the global bounding rectangle of the sprite
- setBoundaries<sf::Sprite>(sprite);
+	setBoundaries<sf::Sprite>(sprite);
 }
 
 // moves the sprite
@@ -34,6 +38,7 @@ void ImageSprite::move(int s_xPos, int s_yPos) {
 	y_Pos = s_yPos;
 	sprite.move(x_Pos, y_Pos);
 }
+
 // checks for events
 void ImageSprite::checkEvent() {
 
@@ -47,6 +52,11 @@ void ImageSprite::update() {
 // draws the sprite
 void ImageSprite::render() {
   windowPointer->draw(sprite);
+}
+
+// returns the sprite
+sf::Sprite* ImageSprite::getSpriteAddress() {
+	return spriteAddress;
 }
 
 // destructer

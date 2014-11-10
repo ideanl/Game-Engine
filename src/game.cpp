@@ -28,7 +28,7 @@ Game::Game(int g_width = 800, int g_height = 600, std::string g_title = "--Title
 
 void Game::start() {
   while(window.isOpen()) {
-    run();
+	run();
   }
 }
 

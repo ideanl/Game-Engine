@@ -4,7 +4,8 @@
 #include "../include/scene.h"
 #include "../include/shapesprite.h"
 #include "../include/textsprite.h"
-#include "../include/button.h"
+#include "../include/basesprite.h"
+#include <iostream>
 
 void Scene::setWindowPointer(sf::RenderWindow* window) {
   windowPointer = window;
@@ -18,17 +19,17 @@ void StartScene::create() {
   eventManager->addEvent(sf::Event::Closed, sf::Keyboard::Escape);
   sprites["background"] = new ShapeSprite();
   sprites["header"] = new TextSprite();
-  sprites["play"] = new Button();
-  static_cast<ShapeSprite*>(sprites["background"])->create(windowPointer, 0, 0, 0, 0, "rectangle", windowPointer->getSize().x, windowPointer->getSize().y, sf::Color::Red);
-  static_cast<TextSprite*>(sprites["header"])->create(windowPointer, "Welcome to SAI", "sixty.ttf", 64, sf::Color::Black, windowPointer->getSize().x / 2 , 50);
-  static_cast<Button*>(sprites["play"])->create(windowPointer, "Press to switch scene", "sixty.ttf", "portal.png", 20, sf::Color::Green, 250, 400, 0, 0);
+  static_cast<ShapeSprite*>(sprites["background"])->create(windowPointer, 0, 0, 0, 0, "rectangle", windowPointer->getSize().x, windowPointer->getSize().y, sf::Vector3f(255,0,0));
+  static_cast<TextSprite*>(sprites["header"])->create(windowPointer, "Welcome to SAI", "sixty.ttf", 64, sf::Vector3f(255, 255, 255), 0 , 50);
+  sprites["header"]->move<TextSprite*>(windowPointer->getSize().x/2 - sprites["header"]->getWidth()/2, 50, static_cast<TextSprite*>(sprites["header"]));
 }
 
 void MainScene::create() {
   sprites["background"] = new ShapeSprite();
   sprites["header"] = new TextSprite();
-  static_cast<ShapeSprite*>(sprites["background"])->create(windowPointer, 0, 0, 0, 0, "rectangle", windowPointer->getSize().x, windowPointer->getSize().y, sf::Color::Red);
-  static_cast<TextSprite*>(sprites["header"])->create(windowPointer, "Welcome to the Main Place", "sixty.ttf", 64, sf::Color::Black, windowPointer->getSize().x / 2 , 50);
+  static_cast<ShapeSprite*>(sprites["background"])->create(windowPointer, 0, 0, 0, 0, "rectangle", windowPointer->getSize().x, windowPointer->getSize().y, sf::Vector3f(30, 200, 0));
+  static_cast<TextSprite*>(sprites["header"])->create(windowPointer, "Main Scene", "sixty.ttf", 64, sf::Vector3f(255, 255, 255), 0, 50);
+  sprites["header"]->move<TextSprite*>(windowPointer->getSize().x/2 - sprites["header"]->getWidth()/2, 50, static_cast<TextSprite*>(sprites["header"]));
 }
 
 void Scene::update() {
