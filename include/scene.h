@@ -4,6 +4,7 @@
 #include <vector>
 #include <map>
 #include "basesprite.h"
+#include "eventmanager.h"
 
 class Scene {
   public:
@@ -16,9 +17,11 @@ class Scene {
     void render();
 	// sets the window pointer
     void setWindowPointer(sf::RenderWindow* window);
+    void setEventManager(EventManager* eventMan);
     std::string state;
   protected:
     sf::RenderWindow* windowPointer;
+    EventManager* eventManager;
     std::map<std::string, BaseSprite*> sprites;
 };
 
@@ -27,4 +30,10 @@ class StartScene: public Scene {
   	// creates the start scene in memory
     void create();
 };
+
+class MainScene: public Scene {
+  public:
+    void create();
+};
+
 #endif

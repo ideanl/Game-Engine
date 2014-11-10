@@ -1,7 +1,12 @@
+#include <iostream>
 #include "../include/eventmanager.h"
 
 EventManager::EventManager() {
+  //addEvent(sf::Event::Closed);
+}
 
+void EventManager::setWindowPointer(sf::RenderWindow* window) {
+  windowPointer = window;
 }
 
 // sets the window Pointer 
@@ -10,42 +15,46 @@ void EventManager::setWindowPointer(sf::RenderWindow& window) {
 }
 
 // sets the current scene
-void EventManager::setScene(Scene* current) {
+/*void EventManager::setScene(Scene* current) {
 	currentScene = current;
+}*/
+
+void EventManager::addEvent(sf::Event::EventType event, sf::Keyboard::Key key) {
+  event_list.push_back(event);
+  key_list.push_back(key);
 }
 
-// checks for all events in the game
-void EventManager::check() {
-	checkWindow();
-	checkScene();
-	// checkCharacter();
-}
-void EventManager::checkWindow() {
+std::vector<sf::Keyboard::Key> EventManager::checkKeys() {
+  std::vector<sf::Keyboard::Key> final_events;
   while(windowPointer->pollEvent(event)) {
     switch(event.type) {
       case sf::Event::Closed:
         windowPointer->close();
         break;
       case sf::Event::KeyPressed:
-        if(event.key.code == sf::Keyboard::Escape)
-          windowPointer->close();
-        break;
-      default:
-        break;
+        for(int i = 0;i < key_list.size();i++) {
+          if (key_list[i] == event.key.code) {
+            final_events.push_back(key_list[i]);
+            break;
+          }
+        }
     }
   }
+  return final_events;
 }
 
-void EventManager::checkScene() {
-	//currentScene->checkEvent();
+std::vector<sf::Event::EventType> EventManager::checkEvents() {
+  std::vector<sf::Event::EventType> final_events;
+  while(windowPointer->pollEvent(event)) {
+    for(int i = 0;i < event_list.size();i++) {
+      if (event_list[i] == event.type) {
+        final_events.push_back(event_list[i]);
+        break;
+      }
+    }
+  }
+  return final_events;
 }
-
-/*
-void EventManager::checkCharacter(character& character) {
-  characterPointer = &character;
-  characterPointer->checkEvent();
-}
-*/
 
 EventManager::~EventManager() {
 

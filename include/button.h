@@ -18,6 +18,8 @@ class Button :public BaseSprite{
 		void checkEvent();
 		// tells if button was clicked
 		bool isClicked();
+    // moves the button
+    void move(int s_xPos, int s_yPos);
 		// updates the button
 		void update();
 		// draws the button

@@ -59,6 +59,13 @@ bool Button::isClicked() {
 	return false;
 }
 
+// moves the button
+void Button::move(int s_xPos, int s_yPos) {
+  image.move(s_xPos, s_yPos);
+  x_textPos = s_xPos + (imageWidth - textWidth) / 2;
+  y_textPos = s_yPos + (imageHeight - textHeight) / 2;
+  text.move(x_textPos, y_textPos);
+}
 // updates the button
 void Button::update() {
 
