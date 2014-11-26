@@ -25,13 +25,6 @@ class Scene {
     std::map<std::string, BaseSprite*> sprites;
 };
 
-class StartScene: public Scene {
-  public:
-  	// creates the start scene in memory
-    void create();
-    void sceneUpdate();
-};
-
 class MainScene: public Scene {
   public:
     void create();
