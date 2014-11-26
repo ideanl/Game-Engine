@@ -16,12 +16,7 @@ void Scene::setEventManager(EventManager* eventMan) {
 }
 
 void Scene::update() {
-  //Check event (returns vector<sf::Keyboard::Key>)
-  std::vector<sf::Keyboard::Key> keys = eventManager->checkKeys();
-
-  checkMainKeys(keys);
-
-  sceneUpdate(keys);
+  sceneUpdate();
   //std::cout << stuff.size() << std::endl;
   //Pass relevant events to relevant sprites here into their update functions which handles them...
   for(std::map<std::string, BaseSprite*>::iterator it = sprites.begin(); it != sprites.end();++it) {
@@ -35,17 +30,7 @@ void Scene::render() {
   }
 }
 
-
-void Scene::checkMainKeys(std::vector<sf::Keyboard::Key> keys) {
-  for(int i = 0; i < keys.size(); i++) {
-    if (keys[i] == sf::Keyboard::Escape)
-      windowPointer->close();
-  }
-}
-
-
 void StartScene::create() {
-  eventManager->addEvent(sf::Event::Closed, sf::Keyboard::Escape);
   sprites["background"] = new ShapeSprite();
   sprites["header"] = new TextSprite();
   static_cast<ShapeSprite*>(sprites["background"])->create(windowPointer, 0, 0, 0, 0, "rectangle", windowPointer->getSize().x, windowPointer->getSize().y, sf::Vector3f(255,0,0));
@@ -53,9 +38,7 @@ void StartScene::create() {
   sprites["header"]->move<TextSprite*>(windowPointer->getSize().x/2 - sprites["header"]->getWidth()/2, 50, static_cast<TextSprite*>(sprites["header"]));
 }
 
-void StartScene::sceneUpdate(std::vector<sf::Keyboard::Key> keys) {
-  //for(int i = 0; i < keys.size(); i++) {
-  //}
+void StartScene::sceneUpdate() {
 }
 
 void MainScene::create() {
@@ -67,6 +50,6 @@ void MainScene::create() {
 }
 
 
-void MainScene::sceneUpdate(std::vector<sf::Keyboard::Key> keys) {
+void MainScene::sceneUpdate() {
 
 }

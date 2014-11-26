@@ -19,22 +19,27 @@ void EventManager::setWindowPointer(sf::RenderWindow& window) {
 	currentScene = current;
 }*/
 
-void EventManager::addEvent(sf::Event::EventType event, sf::Keyboard::Key key) {
+void EventManager::addEvent(sf::Event::EventType event) {
   event_list.push_back(event);
+}
+
+void EventManager::addKey(sf::Keyboard::Key key, std::function<void()> lambda) {
+  addKeyAction(key, lambda);
+}
+
+void EventManager::addKeyAction(sf::Keyboard::Key key, std::function<void()> lambda) {
   key_list.push_back(key);
+  action_list.push_back(lambda);
 }
 
 std::vector<sf::Keyboard::Key> EventManager::checkKeys() {
   std::vector<sf::Keyboard::Key> final_events;
   while(windowPointer->pollEvent(event)) {
     switch(event.type) {
-      case sf::Event::Closed:
-        windowPointer->close();
-        break;
       case sf::Event::KeyPressed:
         for(int i = 0;i < key_list.size();i++) {
           if (key_list[i] == event.key.code) {
-            final_events.push_back(key_list[i]);
+            action_list[i]();
             break;
           }
         }
