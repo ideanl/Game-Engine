@@ -1,11 +1,11 @@
 #include <iostream>
 #include <map>
-#include "../include/game.h"
-#include "../include/scene.h"
-#include "../include/startscene.h"
-#include "../include/shapesprite.h"
-#include "../include/textsprite.h"
-#include "../include/basesprite.h"
+#include "../../include/game.h"
+#include "../../include/scene.h"
+#include "../../include/scenes/startscene.h"
+#include "../../include/shapesprite.h"
+#include "../../include/textsprite.h"
+#include "../../include/basesprite.h"
 #include <iostream>
 
 void StartScene::create() {

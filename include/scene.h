@@ -25,10 +25,4 @@ class Scene {
     std::map<std::string, BaseSprite*> sprites;
 };
 
-class MainScene: public Scene {
-  public:
-    void create();
-    void sceneUpdate();
-};
-
 #endif
