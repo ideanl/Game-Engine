@@ -8,7 +8,6 @@
 // Parent Class for menus and levels
 class MenuLevel {
   public:
-    MenuLevel();
     std::string name;
     void update();
     void render();
@@ -18,7 +17,6 @@ class MenuLevel {
     virtual void menuLevelUpdate() = 0;
     std::string state;
     Manager<Scene> sceneManager;
-    ~MenuLevel();
   protected:
     sf::RenderWindow* windowPointer;
     EventManager* eventManager;

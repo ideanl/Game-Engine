@@ -15,7 +15,6 @@ Game::Game(int g_width = 800, int g_height = 600, std::string g_title = "--Title
   menuLevelManager.setWindowPointer(&window);
   eventManager.setWindowPointer(&window);
   menuLevelManager.setEventManager(&eventManager);
-
   //Create MenuLevel classes
   menuLevelManager.add<StartMenu>("StartMenu");
   menuLevelManager.add<Level1>("Level1");

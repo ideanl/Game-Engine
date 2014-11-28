@@ -25,6 +25,10 @@ void EventManager::addEvent(sf::Event::EventType event, std::function<void()> la
 }
 
 void EventManager::addKey(sf::Keyboard::Key key, std::function<void()> lambda) {
+  addKeyAction(key, lambda);
+}
+
+void EventManager::addKeyAction(sf::Keyboard::Key key, std::function<void()> lambda) {
   key_list.push_back(key);
   key_action_list.push_back(lambda);
 }
@@ -47,28 +51,6 @@ void EventManager::check() {
         }
       }
     }
-  }
-}
-
-// Sets the index to delete from key_list/action_list 
-// when menu or scene is destroyed
-void EventManager::setDeleteMark(std::string menu_level) {
-  cout << deleteIndex_menu << std::endl;
-  //if (menu_level == "menu")
-  //  deleteIndex_menu = key_list.size();
-  //else if (menu_level == "scene")
-  //  deleteIndex_scene = key_list.size();
-}
-
-//Deletes from key_list/action_list from the delete index
-void EventManager::deleteDone(std::string menu_level) {
-  if (menu_level == "menu") {
-    for(int i = key_list.size() - 1;i >= deleteIndex_menu;i--) {
-      key_list.pop_back();
-      action_list.pop_back();
-    }
-  } else if (menu_level == "scene") {
-    
   }
 }
 

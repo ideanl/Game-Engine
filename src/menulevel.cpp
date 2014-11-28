@@ -1,9 +1,5 @@
 #include "../include/menulevel.h"
 
-MenuLevel::MenuLevel() {
-  eventManager->setDeleteMark("menu");
-}
-
 void MenuLevel::setWindowPointer(sf::RenderWindow* window) {
   windowPointer = window;
   sceneManager.setWindowPointer(windowPointer);
@@ -21,8 +17,4 @@ void MenuLevel::update() {
 
 void MenuLevel::render() {
   sceneManager.render();
-}
-
-MenuLevel::~MenuLevel() {
-  eventManager->deleteDone("menu");
 }
