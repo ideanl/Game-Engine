@@ -19,46 +19,35 @@ void EventManager::setWindowPointer(sf::RenderWindow& window) {
 	currentScene = current;
 }*/
 
-void EventManager::addEvent(sf::Event::EventType event) {
+void EventManager::addEvent(sf::Event::EventType event, std::function<void()> lambda) {
   event_list.push_back(event);
+  event_action_list.push_back(lambda);
 }
 
 void EventManager::addKey(sf::Keyboard::Key key, std::function<void()> lambda) {
-  addKeyAction(key, lambda);
-}
-
-void EventManager::addKeyAction(sf::Keyboard::Key key, std::function<void()> lambda) {
   key_list.push_back(key);
-  action_list.push_back(lambda);
+  key_action_list.push_back(lambda);
 }
 
-std::vector<sf::Keyboard::Key> EventManager::checkKeys() {
-  std::vector<sf::Keyboard::Key> final_events;
+void EventManager::check() {
   while(windowPointer->pollEvent(event)) {
-    switch(event.type) {
-      case sf::Event::KeyPressed:
-        for(int i = 0;i < key_list.size();i++) {
-          if (key_list[i] == event.key.code) {
-            action_list[i]();
-            break;
-          }
+    if(event.type == sf::Event::KeyPressed) {
+      for(int i = 0;i < key_list.size();i++) {
+        if(key_list[i] == event.key.code) {
+          key_action_list[i]();
+          break;
         }
+      }
     }
-  }
-  return final_events;
-}
-
-std::vector<sf::Event::EventType> EventManager::checkEvents() {
-  std::vector<sf::Event::EventType> final_events;
-  while(windowPointer->pollEvent(event)) {
-    for(int i = 0;i < event_list.size();i++) {
-      if (event_list[i] == event.type) {
-        final_events.push_back(event_list[i]);
-        break;
+    else {
+      for(int i = 0;i < event_list.size();i++) {
+        if(event_list[i] == event.type) {
+          event_action_list[i]();
+          break;
+        }
       }
     }
   }
-  return final_events;
 }
 
 EventManager::~EventManager() {

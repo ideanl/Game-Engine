@@ -13,23 +13,23 @@ ShapeSprite::ShapeSprite() {
 	transformables.push_back(circlePointer);
 }
 
-void ShapeSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, std::string s_shapeType, float s_param1, float s_param2, sf::Vector3f s_color) {
-	// sets all the member variables
+void ShapeSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, int s_width, int s_height, sf::Vector3f s_color, std::string s_textureFile, std::string s_fontFile, std::string s_message) {	
+  // sets all the member variables
 	windowPointer = window;
 	x_Pos = s_xPos;
 	y_Pos = s_yPos;
 	x_Velocity = s_xVelocity;
 	y_Velocity = s_yVelocity;
-	param1 = s_param1;
-	param2 = s_param2;
-	shapeType = lowerCase(s_shapeType);
+	width = s_width;
+	height = s_height;
+	textureFile = lowerCase(s_textureFile);
 	color.r = s_color.x;
 	color.g = s_color.y;
 	color.b = s_color.z;
 
 	// for circles
-	if(shapeType == "circle") {
-		circle_shape.setRadius(param1);
+	if(textureFile == "circle") {
+		circle_shape.setRadius(width);
 		circle_shape.setFillColor(color);
 		circle_shape.setPosition(x_Pos, y_Pos);
 		// sets the width and height of the global bounding rectangle
@@ -37,8 +37,8 @@ void ShapeSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s
 	}
 
 	// for rectangles
-	else if(shapeType == "rectangle") {
-		rect_shape.setSize(sf::Vector2f(param1, param2));
+	else if(textureFile == "rectangle") {
+		rect_shape.setSize(sf::Vector2f(width, height));
 		rect_shape.setFillColor(color);
 		rect_shape.setPosition(x_Pos, y_Pos);
 		// sets the width and height of the global bounding rectangle
@@ -65,9 +65,9 @@ void ShapeSprite::update() {
 
 // draws the sprite
 void ShapeSprite::render() {
-	if(shapeType == "circle") 
+	if(textureFile == "circle") 
 		windowPointer->draw(circle_shape);
-	if(shapeType == "rectangle") 
+	if(textureFile == "rectangle") 
 		windowPointer->draw(rect_shape);
 }
 

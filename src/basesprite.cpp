@@ -5,11 +5,6 @@ BaseSprite::BaseSprite() {
 
 }
 
-// creates the sprite in memory 
-void BaseSprite::create() {
-
-}
-
 // returns width of global bounding rectangle
 int BaseSprite::getWidth() {
 	return width;

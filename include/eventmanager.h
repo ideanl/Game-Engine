@@ -11,10 +11,9 @@ class EventManager {
 	  // sets the current scene
 	  //void setScene(Scene* current);
     void setWindowPointer(sf::RenderWindow* window);
-    void addEvent(sf::Event::EventType event);
+    void addEvent(sf::Event::EventType event, std::function<void()> lambda);
     void addKey(sf::Keyboard::Key key, std::function<void()> lambda);
-    std::vector<sf::Keyboard::Key> checkKeys();
-    std::vector<sf::Event::EventType> checkEvents();
+    void check();
     // destructer
     ~EventManager();
   protected:
@@ -24,8 +23,8 @@ class EventManager {
     sf::Event event;
     std::vector<sf::Event::EventType> event_list;
     std::vector<sf::Keyboard::Key> key_list;
-    std::vector<std::function<void()>> action_list;
-    void addKeyAction(sf::Keyboard::Key key, std::function<void()> lambda);
+    std::vector<std::function<void()>> event_action_list;
+    std::vector<std::function<void()>> key_action_list;
 };
 
 #endif
