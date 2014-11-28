@@ -10,25 +10,24 @@ class ImageSprite :public BaseSprite {
   public:
   	// constructer
     ImageSprite();
-	// creates the sprite in memory, sets all its atttributes
-    void create(sf::RenderWindow* window, std::string s_textureFile, int s_xPos,int s_yPos, int s_xVelocity, int s_yVelocity);
+	  // creates the sprite in memory, sets all its atttributes
+    void create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, int s_width, int s_height, sf::Vector3f s_color, std::string s_textureFile, std::string s_fontFile, std::string s_message);  
     // moves the sprite
-	void move(int s_xPos, int s_yPos);
-	// checks for events
-	void checkEvent();
-	// updates the sprite
+	  void move(int s_xPos, int s_yPos);
+	  // checks for events
+	  void checkEvent();
+	  // updates the sprite
     void update();
-	// draws the sprite
+	  // draws the sprite
     void render();
-	// returns the sprite
-	sf::Sprite* getSpriteAddress();
-	// destructer
+	  // returns the sprite
+	  sf::Sprite* getSpriteAddress();
+	  // destructer
     ~ImageSprite();
   protected:
   	sf::Texture texture;
-	sf::Sprite sprite;
-	std::string textureFile;
-	sf::Transformable* spritePointer;
+	  sf::Sprite sprite;
+	  sf::Transformable* spritePointer;
   private:
   	sf::Sprite* spriteAddress;
 };

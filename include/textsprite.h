@@ -11,8 +11,8 @@ class TextSprite :public BaseSprite{
 		// constructer
 		TextSprite();
 		// creates sprite in memory, sets all attributes
-		void create(sf::RenderWindow* window, std::string s_messageString, std::string s_fontString, int s_charSize, sf::Vector3f s_color, int s_xPos, int s_yPos);
-		// moves the sprite
+    void create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, int s_width, int s_height, sf::Vector3f s_color, std::string s_textureFile, std::string s_fontFile, std::string s_message);
+    // moves the sprite
 		void move(int s_xPos, int s_yPos);
 		// checks for events
 		void checkEvent();
@@ -26,13 +26,11 @@ class TextSprite :public BaseSprite{
 		~TextSprite();
 	protected:
 	private:
-		std::string messageString, fontString;
 		int charSize;
 
-		sf::Color color;
 		sf::Font font;
 		sf::Text text;
-    	sf::Transformable* textPointer;
+    sf::Transformable* textPointer;
 		sf::Text* textAddress;
 };
 

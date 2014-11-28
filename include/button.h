@@ -13,8 +13,8 @@ class Button :public BaseSprite{
 		// constructer
 		Button();
 		// creates the button in memory, sets the attributes
-		void create(sf::RenderWindow* window, std::string s_messageString, std::string s_fontString, std::string s_textrueFile, int s_charSize, sf::Vector3f s_color, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity);
-		// checks for events
+		void create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, int s_width, int s_height, sf::Vector3f s_color, std::string s_textureFile, std::string s_fontFile, std::string s_message);
+    // checks for events
 		void checkEvent();
 		// tells if button was clicked
 		bool isClicked();
@@ -32,9 +32,6 @@ class Button :public BaseSprite{
 		TextSprite text;
 		sf::Mouse mouse;
 		sf::Vector2i mousePos;
-		std::string messageString, fontString, textureFile; 
-		int charSize, x_textPos, y_textPos, imageWidth, imageHeight, textWidth, textHeight;
-		sf::Vector3f color;
 		sf::Transformable* textSpritePointer;
 		sf::Transformable* imageSpritePointer;
 		// add pointers in header and source for textsprite and imagesprite

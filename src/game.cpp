@@ -22,7 +22,8 @@ Game::Game(int g_width = 800, int g_height = 600, std::string g_title = "--Title
   //Set MenuLevel class
   menuLevelManager.set("StartMenu");
 
-  eventManager.addKey(sf::Keyboard::Escape, [&] () { window.close();});
+  eventManager.addEvent(sf::Event::Closed, [&] () { window.close();});
+  eventManager.addKey(sf::Keyboard::Escape, [&] () {  window.close();});
 
   //set EventManager window reference
   start();
@@ -35,9 +36,7 @@ void Game::start() {
 }
 
 void Game::update() {
-  //Check event (returns vector<sf::Keyboard::Key>)
-  eventManager.checkKeys();
-
+  eventManager.check();
   menuLevelManager.update();
 }
 

@@ -12,8 +12,8 @@ class ShapeSprite :public BaseSprite {
 		// constructer
 		ShapeSprite();
 		// creates the sprite in memory, sets the attributes
-		void create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, std::string s_shapeType, float s_param1, float s_param2, sf::Vector3f s_color);
-		// moves the sprite
+		void create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, int s_width, int s_height, sf::Vector3f s_color, std::string s_textureFile, std::string s_fontFile, std::string s_message);
+    // moves the sprite
 		void move(int s_xPos, int s_yPos);
 		// checks for events
 		void checkEvent();
@@ -25,11 +25,8 @@ class ShapeSprite :public BaseSprite {
 		~ShapeSprite();
 	protected:
 	private:
-		std::string shapeType;
-		int param1, param2;
 		sf::RectangleShape rect_shape;
 		sf::CircleShape circle_shape;
-		sf::Color color;
 		sf::Transformable* rectanglePointer;
 		sf::Transformable* circlePointer;
 };
