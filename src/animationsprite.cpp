@@ -6,10 +6,7 @@ AnimationSprite::AnimationSprite() {
   spriteAddress = &sprite;
 }
 
-void AnimationSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, int s_width, int s_height, sf::Vector3f s_color, std::string s_textureFile, std::string s_fontFile, std::string s_message) { 
-}
-
-void AnimationSprite::createAnim(sf::RenderWindow* window, std::string s_textureFile, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, float s_animationSpeed, int s_total_frames, int s_columns, int s_rows, int s_frame_width, int s_frame_height, bool s_always_moving, float s_default_index) {
+void AnimationSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, int s_width, int s_height, sf::Vector3f s_color, std::string s_textureFile, std::string s_fontFile, std::string s_message, SpriteConfig* config) {
   windowPointer = window;
   x_Pos = s_xPos;
   y_Pos = s_yPos;
@@ -17,17 +14,15 @@ void AnimationSprite::createAnim(sf::RenderWindow* window, std::string s_texture
   y_Velocity = s_yVelocity;
   textureFile = s_textureFile;
 
-  animationSpeed = s_animationSpeed;
-  total_frames = s_total_frames;
-  columns = s_columns;
-  rows = s_rows;
-  frame_width = s_frame_width;
-  frame_height = s_frame_height;
-  always_moving = s_always_moving;
-
-  default_index = s_default_index;
-
-  index = s_default_index;
+  animationSpeed = static_cast<AnimationConfig*>(config)->getAnimationSpeed();
+  total_frames = static_cast<AnimationConfig*>(config)->getTotalFrames();
+  columns = static_cast<AnimationConfig*>(config)->getColumns();
+  rows = static_cast<AnimationConfig*>(config)->getRows();
+  frame_width = static_cast<AnimationConfig*>(config)->getFrameWidth();
+  frame_height = static_cast<AnimationConfig*>(config)->getFrameHeight();
+  always_moving = static_cast<AnimationConfig*>(config)->getAlwaysMoving();
+  default_index = static_cast<AnimationConfig*>(config)->getDefaultIndex();
+  index = default_index;
 
   if (!texture.loadFromFile("./res/" + textureFile)) {
     std::cerr << "Failed to load" << textureFile << std::endl;
@@ -48,6 +43,7 @@ void AnimationSprite::update() {
     index += animationSpeed;
     if (index > total_frames) index = 0;
   }
+
   sprite.setTextureRect(createRect());
 }
 

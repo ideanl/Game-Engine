@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
+#include "../include/spriteconfig.h"
 
 // The Base class for all other sprites
 class BaseSprite {
@@ -11,7 +12,7 @@ class BaseSprite {
   	// construter
     BaseSprite();
 	// creates the button in memory, stores all its attributes
-  virtual void create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, int s_width, int s_height, sf::Vector3f s_color, std::string s_textureFile, std::string s_fontFile, std::string s_message) = 0;
+  virtual void create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s_xVelocity, int s_yVelocity, int s_width, int s_height, sf::Vector3f s_color, std::string s_textureFile, std::string s_fontFile, std::string s_message, SpriteConfig* config = 0) = 0;
 	// checks for events
 	virtual void checkEvent() = 0;
 	// updates the sprite position and such
