@@ -24,6 +24,8 @@ void AnimationSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, i
   default_index = static_cast<AnimationConfig*>(config)->getDefaultIndex();
   index = default_index;
 
+  delete config;
+
   if (!texture.loadFromFile("./res/" + textureFile)) {
     std::cerr << "Failed to load" << textureFile << std::endl;
   } else {
