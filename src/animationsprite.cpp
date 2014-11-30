@@ -18,10 +18,10 @@ void AnimationSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, i
   total_frames = static_cast<AnimationConfig*>(config)->getTotalFrames();
   columns = static_cast<AnimationConfig*>(config)->getColumns();
   rows = static_cast<AnimationConfig*>(config)->getRows();
-  frame_width = static_cast<AnimationConfig*>(config)->getFrameWidth();
-  frame_height = static_cast<AnimationConfig*>(config)->getFrameHeight();
   always_moving = static_cast<AnimationConfig*>(config)->getAlwaysMoving();
   default_index = static_cast<AnimationConfig*>(config)->getDefaultIndex();
+  frame_width = s_width;
+  frame_height = s_height;
   index = default_index;
 
   delete config;

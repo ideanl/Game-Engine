@@ -7,7 +7,7 @@ class SpriteConfig {
 
 class AnimationConfig: public SpriteConfig{
   public:
-    AnimationConfig(float s_animationSpeed, int s_total_frames, int s_columns, int s_rows, int s_frame_width, int s_frame_height, bool s_always_moving = false, float s_default_index = 0);
+    AnimationConfig(float s_animationSpeed, int s_total_frames, int s_columns, int s_rows, bool s_always_moving = false, float s_default_index = 0);
     float getAnimationSpeed();
     int getColumns();
     int getRows();
