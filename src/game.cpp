@@ -15,12 +15,9 @@ Game::Game(int g_width = 800, int g_height = 600, std::string g_title = "--Title
   menuLevelManager.setWindowPointer(&window);
   eventManager.setWindowPointer(&window);
   menuLevelManager.setEventManager(&eventManager);
-  //Create MenuLevel classes
-  menuLevelManager.add<StartMenu>("StartMenu");
-  menuLevelManager.add<Level1>("Level1");
 
   //Set MenuLevel class
-  menuLevelManager.set("StartMenu");
+  menuLevelManager.set<StartMenu>("StartMenu");
 
   eventManager.addEvent(sf::Event::Closed, [&] () { window.close();});
   eventManager.addKey(sf::Keyboard::Escape, [&] () {  window.close();});

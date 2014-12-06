@@ -19,6 +19,7 @@ class Scene {
     void setWindowPointer(sf::RenderWindow* window);
     void setEventManager(EventManager* eventMan);
     virtual void sceneUpdate() = 0;
+    virtual void clearSprites();
   protected:
     sf::RenderWindow* windowPointer;
     EventManager* eventManager;

@@ -11,6 +11,10 @@ void Scene::setWindowPointer(sf::RenderWindow* window) {
   windowPointer = window;
 }
 
+void Scene::clearSprites() {
+  sprites.clear();
+}
+
 void Scene::setEventManager(EventManager* eventMan) {
   eventManager = eventMan;
 }
