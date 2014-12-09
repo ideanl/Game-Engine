@@ -40,9 +40,39 @@ void TextSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s_
 	}
 }
 
-// moves the sprite
-void TextSprite::move(int s_xPos, int s_yPos) {
-	text.setPosition(s_xPos, s_xPos);
+// sets the sprite position
+void TextSprite::setPosition(int s_xPos, int s_yPos) {
+  text.setPosition(s_xPos, s_yPos);
+  x_Pos = s_xPos;
+  y_Pos = s_yPos;
+}
+
+// moves the sprite along the horizontal axis
+void TextSprite::move_x(int s_xPos) {
+  while(x_Pos < s_xPos) {
+	  text.move(x_Velocity, 0);
+    x_Pos += x_Velocity;
+  }
+}
+void TextSprite::move_x(bool isMoving) {
+  while(isMoving) {
+    text.move(x_Velocity, 0);
+    x_Pos += x_Velocity;
+  }
+}
+
+// moves the sprite along the vertical axis
+void TextSprite::move_y(int s_yPos) {
+  while(y_Pos < s_yPos) {
+    text.move(0, y_Velocity);
+    y_Pos += y_Velocity;
+  }
+}
+void TextSprite::move_y(bool isMoving) {
+  while(isMoving) {
+    text.move(0, y_Velocity);
+    y_Pos += y_Velocity;
+  }
 }
 
 // checks for events

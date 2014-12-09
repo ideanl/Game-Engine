@@ -19,6 +19,16 @@ int BaseSprite::getHeight() {
 	return height;
 }
 
+// returns the x velocity 
+int BaseSprite::getX_Velocity() {
+  return x_Velocity;
+}
+
+// returns the y velocity
+int BaseSprite::getY_Velocity() {
+  return y_Velocity;
+}
+
 // destructer
 BaseSprite::~BaseSprite() {
 

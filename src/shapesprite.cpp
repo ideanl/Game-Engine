@@ -46,13 +46,46 @@ void ShapeSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s
 	}
 }
 
-// moves the sprite
-void ShapeSprite::move(int s_xPos, int s_yPos) {
-	x_Pos = s_xPos;
-	y_Pos = s_yPos;
-	circle_shape.setPosition(x_Pos, y_Pos);
-	rect_shape.setPosition(x_Pos, y_Pos);
+// sets the sprite position
+void ShapeSprite::setPosition(int s_xPos, int s_yPos) {
+  rect_shape.setPosition(s_xPos, s_yPos);
+  circle_shape.setPosition(s_xPos, s_yPos);
+  x_Pos = s_xPos;
+  y_Pos = s_yPos;
 }
+
+// moves the sprite along the horizontal axis
+void ShapeSprite::move_x(int s_xPos) {
+  while(x_Pos < s_xPos) {
+	  circle_shape.move(x_Velocity, 0);
+	  rect_shape.move(x_Velocity, 0);
+    x_Pos += x_Velocity;
+  }
+}
+void ShapeSprite::move_x(bool isMoving) {
+  while(isMoving) {
+    circle_shape.move(x_Velocity, 0);
+    rect_shape.move(x_Velocity, 0);
+    x_Pos += x_Velocity;
+  }
+}
+
+// moves the sprite along the vertical axis
+void ShapeSprite::move_y(int s_yPos) {
+  while(y_Pos < s_yPos) {
+    circle_shape.move(0, y_Velocity);
+    rect_shape.move(0, y_Velocity);
+    y_Pos += y_Velocity;
+  }
+}
+void ShapeSprite::move_y(bool isMoving) {
+  while(isMoving) {
+    circle_shape.move(0, y_Velocity);
+    rect_shape.move(0, y_Velocity);
+    y_Pos += y_Velocity;
+  }
+}
+
 // checks for events
 void ShapeSprite::checkEvent() {
 
