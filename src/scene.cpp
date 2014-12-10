@@ -11,7 +11,7 @@ void Scene::setWindowPointer(sf::RenderWindow* window) {
   windowPointer = window;
 }
 
-void Scene::clearSprites() {
+void Scene::deleteData() {
   sprites.clear();
 }
 
