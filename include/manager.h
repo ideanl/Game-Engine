@@ -37,13 +37,9 @@ template <class manager_type> void Manager<manager_type>::setEventManager(EventM
 
 template <class manager_type> template <class data_type> void Manager<manager_type>::set(std::string type) {
   //Delete old data
-  //if (typeid(*current) == typeid(Scene) && current != NULL) {
   if (current != NULL) {
-    //std::cout << type << std::endl;
-    std::cout << current->name << std::endl;
-    //current->clearSprites();
+    current->deleteData();
   }
-  //std::cout << current << std::endl;
   objects[type] = new data_type;
   objects[type]->setWindowPointer(windowPointer);
   objects[type]->setEventManager(eventManager);
