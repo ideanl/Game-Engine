@@ -19,12 +19,22 @@ class BaseSprite {
   virtual void update() = 0;
 	// draws the sprite
   virtual void render() = 0;
-	// moves the sprite
-	virtual void move(int s_xPos, int s_yPos) = 0;
+  // sets position of the sprite
+  virtual void setPosition(int s_xPos, int s_yPos) = 0;
+	// moves the sprite along the horizontal axis
+	virtual void move_x(int s_xPos) = 0;
+  virtual void move_x(bool isMoving) = 0;
+  // moves the sprite along the vertical axis
+  virtual void move_y(int s_yPos) = 0;
+  virtual void move_y(bool isMoving) = 0;
 	// reutns the gobal bouding rectangle width
 	int getWidth();
-	// returns the gobla bouding rectange height
+	// returns the gobal bouding rectange height
 	int getHeight();
+  // returns x velocity of sprite
+  int getX_Velocity();
+  // returns the y velocity of sprite
+  int getY_Velocity();
 	// returns the drawables
 	std::vector<sf::Transformable*> getTransformables();
 	// gets and sets the rectangle surrounding the sprite
@@ -35,9 +45,24 @@ class BaseSprite {
 	}
   // moves the sprite
   template <class s_type> void move(int s_xPos, int s_yPos, s_type object) {
-    for(int i = 0; i < object->getTransformables().size(); i++) { 
-	 object->getTransformables()[i]->setPosition(s_xPos, s_yPos);
-	 }
+    sf::Vector2f movedDistance(0.0, 0.0);
+    while(movedDistance.x < s_xPos) {
+      for(int i = 0; i < object->getTransformables().size(); i++) { 
+	      object->getTransformables()[i]->move(object->getX_Velocity(), 0);
+	    }
+      movedDistance.x += object->getX_Velocity();
+    }
+    while(movedDistance.y < s_yPos) {
+      for(int i = 0; i < object->getTransformables().size(); i++) {
+        object->getTransformables()[i]->move(0, object->getY_Velocity());
+      }
+      movedDistance.y += object->getY_Velocity();
+    }
+  }
+  template <class s_type> void setPosition(int s_xPos, int s_yPos, s_type object) {
+    for(int i = 0; i < object->getTransformables().size(); i++) {
+      object->getTransformables()[i]->setPosition(s_xPos, s_yPos);
+    }
   }
 	// destructer
     ~BaseSprite();
