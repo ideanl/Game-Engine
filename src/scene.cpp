@@ -12,7 +12,9 @@ void Scene::setWindowPointer(sf::RenderWindow* window) {
 }
 
 void Scene::deleteData() {
-  sprites.clear();
+  for(auto it = sprites.begin();it != sprites.end();it++) {
+    delete it->second;
+  }
 }
 
 void Scene::setEventManager(EventManager* eventMan) {
