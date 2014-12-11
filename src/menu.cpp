@@ -3,8 +3,8 @@
 #include "../include/scenes/startscene.h"
 
 void StartMenu::create() {
-	sceneManager.add<StartScene>("StartScene");
-	sceneManager.set("StartScene");
+	std::cout << "HERE" << std::endl;
+  sceneManager.set<StartScene>("StartScene");
 }
 
 void StartMenu::menuLevelUpdate() {

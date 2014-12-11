@@ -35,6 +35,7 @@ void EventManager::addKey(sf::Keyboard::Key key, std::function<void()> lambda, s
   }
 }
 
+//Check for events (key pressed, key released, default for events)
 void EventManager::check() {
   while(windowPointer->pollEvent(event)) {
     switch(event.type) {

@@ -20,7 +20,7 @@ template <class manager_type> class Manager {
     void setWindowPointer(sf::RenderWindow* window);
     void setEventManager(EventManager* eventMan);
   protected:
-    manager_type* current = NULL;
+    manager_type* current;
     sf::RenderWindow* windowPointer;
     EventManager* eventManager;
   private:
@@ -37,16 +37,20 @@ template <class manager_type> void Manager<manager_type>::setEventManager(EventM
 
 template <class manager_type> template <class data_type> void Manager<manager_type>::set(std::string type) {
   //Delete old data
+  std::cout << *current << std::endl;
+  //if (typeid(*current) == typeid(Scene) && current != NULL) {
   if (current != NULL) {
-    current->deleteData();
+    //std::cout << type << std::endl;
+    std::cout << current->name << std::endl;
+    //current->clearSprites();
   }
+  //std::cout << current << std::endl;
   objects[type] = new data_type;
   objects[type]->setWindowPointer(windowPointer);
   objects[type]->setEventManager(eventManager);
   objects[type]->create();
   objects[type]->name = type;
   current = objects[type];
-  std::cout << current->name << std::endl;
 }
 
 template <class manager_type> void Manager<manager_type>::update() {
