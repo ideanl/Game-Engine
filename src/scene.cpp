@@ -23,7 +23,6 @@ void Scene::setEventManager(EventManager* eventMan) {
 
 void Scene::update() {
   sceneUpdate();
-  //std::cout << stuff.size() << std::endl;
   //Pass relevant events to relevant sprites here into their update functions which handles them...
   for(std::map<std::string, BaseSprite*>::iterator it = sprites.begin(); it != sprites.end();++it) {
     it->second->update();
