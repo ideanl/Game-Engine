@@ -27,9 +27,11 @@ class BaseSprite {
   // moves the sprite along the vertical axis
   virtual void move_y(int s_yPos) = 0;
   virtual void move_y(bool isMoving) = 0;
-	// reutns the gobal bouding rectangle width
+  // returns the position of the sprite
+  sf::Vector2i getPos();
+	// returns the gobal bounding rectangle width
 	int getWidth();
-	// returns the gobal bouding rectange height
+	// returns the gobal bounding rectange height
 	int getHeight();
   // returns x velocity of sprite
   int getX_Velocity();

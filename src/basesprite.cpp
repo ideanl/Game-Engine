@@ -5,6 +5,12 @@ BaseSprite::BaseSprite() {
 
 }
 
+// returns position of the sprite
+sf::Vector2i BaseSprite::getPos() {
+  sf::Vector2i Pos = {x_Pos, y_Pos};
+  return Pos;
+}
+
 // returns width of global bounding rectangle
 int BaseSprite::getWidth() {
 	return width;
