@@ -57,12 +57,6 @@ sf::IntRect AnimationSprite::createRect() {
   return sf::IntRect(sx, sy, frame_width, frame_height);
 }
 
-void AnimationSprite::move(int s_xPos, int s_yPos) {
-	x_Pos = s_xPos;
-	y_Pos = s_yPos;
-	sprite.move(x_Pos, y_Pos);
-}
-
 // checks for events
 void AnimationSprite::checkEvent() {
 
@@ -72,3 +66,39 @@ void AnimationSprite::checkEvent() {
 void AnimationSprite::render() {
   windowPointer->draw(sprite);
 }
+
+// sets position of the sprite
+void AnimationSprite::setPosition(int s_xPos, int s_yPos) {
+  sprite.setPosition(s_xPos, s_yPos);
+  x_Pos = s_xPos;
+  y_Pos = s_yPos;
+}
+
+// moves the sprite along the horizongal axis
+void AnimationSprite::move_x(int s_xPos) {
+  while(x_Pos < s_xPos) {
+    sprite.move(x_Velocity, 0);
+    x_Pos += x_Velocity;
+  }
+}
+void AnimationSprite::move_x(bool isMoving) {
+  while(isMoving) {
+    sprite.move(x_Velocity, 0);
+    x_Pos += x_Velocity;
+  }
+}
+
+// moves the sprite along the vertical axis
+void AnimationSprite::move_y(int s_yPos) {
+  while(y_Pos < s_yPos) {
+    sprite.move(0, y_Velocity);
+    y_Pos += y_Velocity;
+  }
+}
+void AnimationSprite::move_y(bool isMoving) {
+  while(isMoving) {
+    sprite.move(0, y_Velocity);
+    y_Pos += y_Velocity;
+  }
+}
+
