@@ -15,7 +15,6 @@ class MenuLevel {
     void setEventManager(EventManager* eventMan);
     virtual void create() = 0;
     virtual void menuLevelUpdate() = 0;
-    virtual void deleteData();
     std::string state;
     Manager<Scene> sceneManager;
   protected:

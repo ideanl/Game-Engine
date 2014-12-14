@@ -28,7 +28,6 @@ template <class manager_type> class Manager {
 
 template <class manager_type> void Manager<manager_type>::setWindowPointer(sf::RenderWindow* window) {
   windowPointer = window;
-  std::cout << current << std::endl;
 }
 
 template <class manager_type> void Manager<manager_type>::setEventManager(EventManager* eventMan) {
@@ -38,7 +37,7 @@ template <class manager_type> void Manager<manager_type>::setEventManager(EventM
 template <class manager_type> template <class data_type> void Manager<manager_type>::set(std::string type) {
   //Delete old data
   if (current != NULL) {
-    current->deleteData();
+    delete current;
   }
   objects[type] = new data_type;
   objects[type]->setWindowPointer(windowPointer);
@@ -46,7 +45,6 @@ template <class manager_type> template <class data_type> void Manager<manager_ty
   objects[type]->create();
   objects[type]->name = type;
   current = objects[type];
-  std::cout << current->name << std::endl;
 }
 
 template <class manager_type> void Manager<manager_type>::update() {

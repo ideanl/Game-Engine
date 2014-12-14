@@ -9,17 +9,17 @@
 class Scene {
   public:
     std::string name;
-	// creates the scene in memory
-	virtual void create() = 0;
-	// updates the scene
+    // creates the scene in memory
+    virtual void create() = 0;
+    // updates the scene
     void update();
-	// draws the scene
+    // draws the scene
     void render();
-	// sets the window pointer
+    // sets the window pointer
     void setWindowPointer(sf::RenderWindow* window);
     void setEventManager(EventManager* eventMan);
     virtual void sceneUpdate() = 0;
-    virtual void deleteData();
+    ~Scene();
   protected:
     sf::RenderWindow* windowPointer;
     EventManager* eventManager;

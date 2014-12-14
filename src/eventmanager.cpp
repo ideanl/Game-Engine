@@ -63,7 +63,6 @@ void EventManager::check() {
             break;
           }
         }
-
     }
   }
 }
