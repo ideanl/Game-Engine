@@ -37,7 +37,7 @@ template <class manager_type> void Manager<manager_type>::setEventManager(EventM
 template <class manager_type> template <class data_type> void Manager<manager_type>::set(std::string type) {
   //Delete old data
   if (current != NULL) {
-    current->deleteData();
+    delete current;
   }
   objects[type] = new data_type;
   objects[type]->setWindowPointer(windowPointer);
