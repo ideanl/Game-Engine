@@ -28,11 +28,19 @@ void ImageSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s
     std::cerr << "Failed to load: " << textureFile << std::endl;
   }
   else {
-    if(texture.getSize().x < s_width && texture.getSize().y < s_height) {
-      texture.setRepeated(true);
+    // if too big
+    if(texture.getSize().x > s_width || texture.getSize().y > s_height) {
+      scale = static_cast<float>(s_width) / texture.getSize().x;
+      if(scale < static_cast<float>(s_height) / texture.getSize().y) {
+        scale = static_cast<float>(s_height) / texture.getSize().y;
+      }
     }
-    else if(texture.getSize().x > s_width && texture.getSize().y > s_height) {
-      scale = s_width / texture.getSize().x;
+    // if too small
+    else if(texture.getSize().x < s_width || texture.getSize().y < s_height) {
+      scale = static_cast<float>(texture.getSize().x) / s_width;
+      if(scale > static_cast<float>(texture.getSize().y) / s_height) {
+        scale = static_cast<float>(texture.getSize().y) / s_height;
+      }
     }
   	// smooths out the texture so it is less sharp
     texture.setSmooth(true);

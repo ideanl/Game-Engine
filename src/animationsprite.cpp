@@ -13,7 +13,7 @@ void AnimationSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, i
   x_Velocity = s_xVelocity;
   y_Velocity = s_yVelocity;
   textureFile = s_textureFile;
-
+  scale = 1.0;
   animationSpeed = static_cast<AnimationConfig*>(config)->getAnimationSpeed();
   total_frames = static_cast<AnimationConfig*>(config)->getTotalFrames();
   columns = static_cast<AnimationConfig*>(config)->getColumns();
@@ -25,12 +25,26 @@ void AnimationSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, i
   index = default_index;
 
   delete config;
-
   if (!texture.loadFromFile("./res/" + textureFile)) {
     std::cerr << "Failed to load" << textureFile << std::endl;
   } else {
+      // if too big
+      if(texture.getSize().x > s_width || texture.getSize().y > s_height) {
+        scale = static_cast<float>(s_width) / texture.getSize().x;
+        if(scale < static_cast<float>(s_height) / texture.getSize().y) {
+          scale = static_cast<float>(s_height) / texture.getSize().y;
+        }
+      }  
+      // if too small
+      else if(texture.getSize().x < s_width || texture.getSize().y < s_height) {
+        scale = static_cast<float>(texture.getSize().x) / s_width;
+        if(scale > static_cast<float>(texture.getSize().y) / s_height) {
+          scale = static_cast<float>(texture.getSize().y) / s_height;
+        }
+      }
     texture.setSmooth(true);
     sprite.setTexture(texture);
+    sprite.setScale(scale, scale);
     sprite.setTextureRect(createRect());
     sprite.setPosition(x_Pos, y_Pos);
   }
