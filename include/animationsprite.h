@@ -33,7 +33,7 @@ class AnimationSprite :public BaseSprite {
     sf::Transformable* spritePointer;
   private:
     sf::Sprite* spriteAddress;
-    float animationSpeed;
+    float animationSpeed, scale;
     int columns;
     int rows;
     int frame_width;
