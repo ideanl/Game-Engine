@@ -44,9 +44,4 @@ class StartMenu: public Menu {
     void menuLevelUpdate();
 };
 
-class Level1: public Level {
-  public:
-    void create();
-    void menuLevelUpdate();
-};
 #endif

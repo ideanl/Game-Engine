@@ -1,7 +1,7 @@
-#include "../include/menulevel.h"
-#include "../include/scene.h"
+#include "../../include/levels/level1.h"
 
 void Level1::create() {
+
 }
 
 void Level1::menuLevelUpdate() {
