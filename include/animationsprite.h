@@ -26,13 +26,7 @@ class AnimationSprite :public BaseSprite {
     void move_y(bool isMoving);
     bool curr_moving = false;
 
-    void setPosition(int s_xPos, int s_yPos);
-    // moves the sprite along the horizontal axis
-	  void move_x(int s_xPos);
-    void move_x(bool isMoving);
-    // moves the sprite along the vertical axis
-    void move_y(int s_yPos);
-    void move_y(bool isMoving);
+    bool end();
 
   protected:
     sf::Texture texture;
@@ -48,6 +42,7 @@ class AnimationSprite :public BaseSprite {
     int frame_height;
     int total_frames;
     bool always_moving;
+    bool pauses;
     float index;
     float default_index;
     sf::IntRect createRect();
