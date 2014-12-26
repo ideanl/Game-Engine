@@ -5,8 +5,11 @@
 
 class Level1: public Level {
   public:
-    void create();
     void menuLevelUpdate();
+  private:
+    void setStartScene();
+    void addKeys();
+    void addEvents();
 };
 
 #endif

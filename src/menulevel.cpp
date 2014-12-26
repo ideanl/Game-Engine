@@ -1,5 +1,11 @@
 #include "../include/menulevel.h"
 
+void MenuLevel::create() {
+  setStartScene();
+  addKeys();
+  addEvents();
+}
+
 void MenuLevel::setWindowPointer(sf::RenderWindow* window) {
   windowPointer = window;
   sceneManager.setWindowPointer(windowPointer);

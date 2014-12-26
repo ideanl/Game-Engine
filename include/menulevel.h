@@ -13,27 +13,37 @@ class MenuLevel {
     void render();
     void setWindowPointer(sf::RenderWindow* window);
     void setEventManager(EventManager* eventMan);
-    virtual void create() = 0;
+    void create();
     virtual void menuLevelUpdate() = 0;
     std::string state;
     Manager<Scene> sceneManager;
   protected:
     sf::RenderWindow* windowPointer;
     EventManager* eventManager;
+  private:
+    virtual void setStartScene() = 0;
+    virtual void addKeys() = 0;
+    virtual void addEvents() = 0;
 };
 
 //Class for Levels
 class Level: public MenuLevel  {
 	public:
     virtual void menuLevelUpdate() = 0;
-	  virtual void create() = 0;
+  private:
+    virtual void setStartScene() = 0;
+    virtual void addKeys() = 0;
+    virtual void addEvents() = 0;
 };
 
 //Class for Menus
 class Menu: public MenuLevel  {
 	public:
     virtual void menuLevelUpdate() = 0;
-	  virtual void create() = 0;
+  private:
+    virtual void setStartScene() = 0;
+    virtual void addKeys() = 0;
+    virtual void addEvents() = 0;
 };
 
 #endif

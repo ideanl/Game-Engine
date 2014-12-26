@@ -2,7 +2,7 @@
 #include <iostream>
 #include "../include/manager.h"
 #include "../include/menus/startmenu.h"
-#include "../include/levels/testlevel.h"
+//#include "../include/levels/testlevel.h"
 #include <SFML/Graphics.hpp>
 
 Game::Game(int g_width = 800, int g_height = 600, std::string g_title = "--Title--") {
@@ -22,8 +22,7 @@ Game::Game(int g_width = 800, int g_height = 600, std::string g_title = "--Title
 
   eventManager.addEvent(sf::Event::Closed, [&] () { window.close();});
   eventManager.addKey(sf::Keyboard::Escape, [&] () {  window.close();});
-  eventManager.addKey(sf::Keyboard::Space, [&] () { menuLevelManager.set<TestLevel>("TestLevel");});
-  //set EventManager window reference
+  //eventManager.addKey(sf::Keyboard::Space, [&] () { menuLevelManager.set<TestLevel>("TestLevel");});
   start();
 }
 
