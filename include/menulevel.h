@@ -36,12 +36,4 @@ class Menu: public MenuLevel  {
 	  virtual void create() = 0;
 };
 
-
-//Start Menu Class
-class StartMenu: public Menu { 
-  public:
-    void create();
-    void menuLevelUpdate();
-};
-
 #endif
