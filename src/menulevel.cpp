@@ -16,6 +16,11 @@ void MenuLevel::setEventManager(EventManager* eventMan) {
   sceneManager.setEventManager(eventManager);
 }
 
+void MenuLevel::setMenuLevelManager(Manager<MenuLevel>* menuLevelMan) {
+  menuLevelManager = menuLevelMan;
+  //sceneManager.setMenuLevelManager(menuLevelManager);
+}
+
 void MenuLevel::update() {
   sceneManager.update();
   menuLevelUpdate();

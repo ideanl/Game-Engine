@@ -34,9 +34,9 @@ void TextSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s_
 		text.setString(message);
     text.setColor(color);
 		text.setCharacterSize(charSize);
-		
-		// gets the width and height of the global bounding rectangle
-		setBoundaries<sf::Text>(text);
+    // gets the width and height of the global bounding rectangle
+    setBoundaries<sf::Text>(text);
+    text.setOrigin(width * .50, height * .50);
 	}
 }
 

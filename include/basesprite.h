@@ -70,6 +70,7 @@ class BaseSprite {
     ~BaseSprite();
   protected:
     int x_Velocity, y_Velocity, x_Pos, y_Pos, width, height;
+    bool isFlipped_x, isFlipped_y;
     std::string textureFile, fontFile, message;
     sf::RenderWindow* windowPointer;
     sf::Color color;

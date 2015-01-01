@@ -11,7 +11,7 @@ void StartMenu::setStartScene() {
 }
 
 void StartMenu::addKeys() {
-  eventManager->addKey(sf::Keyboard::Space, [&] () {  menuLevelManager.set<TestLevel>("TestLevel");});
+  //eventManager->addKey(sf::Keyboard::Space, [&] () {  menuLevelManager.set<TestLevel>("TestLevel");});
 }
 
 void StartMenu::addEvents() {

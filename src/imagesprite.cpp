@@ -46,10 +46,14 @@ void ImageSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s
     texture.setSmooth(true);
 	  sprite.setTexture(texture);
     sprite.setScale(scale, scale);
+    sprite.setOrigin(sprite.getTexture()->getSize().x * scale * .50, sprite.getTexture()->getSize().y * scale * .50);
     sf::IntRect textureRect(s_xPos, s_yPos, s_width, s_height);
     sprite.setTextureRect(textureRect);
     // sets color of the sprite
-    sprite.setColor(color);
+    // to keep default color just enter values over 255
+    if(color.r <= 255 && color.g <= 255 && color.b <= 255) {
+      sprite.setColor(color);
+    }
 	  // finds the width and height of the global bounding rectangle of the sprite
 	  setBoundaries<sf::Sprite>(sprite);
   }
@@ -88,6 +92,15 @@ void ImageSprite::move_y(bool isMoving) {
     sprite.move(0, y_Velocity);
     y_Pos += y_Velocity;
   }
+}
+
+// flips the sprite
+void ImageSprite::flip(bool isFlipped) {
+  if(isFlipped == true) {
+    sprite.setScale(-scale, scale);
+  }
+  else
+    sprite.setScale(scale, scale);
 }
 
 // checks for events

@@ -20,6 +20,8 @@ class ImageSprite :public BaseSprite {
     // moves the sprite along the vertical axis
     void move_y(int s_yPos);
     void move_y(bool isMoving);
+    // flips the sprite
+    void flip(bool isFlipped);
 	  // checks for events
 	  void checkEvent();
 	  // updates the sprite

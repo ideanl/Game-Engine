@@ -9,6 +9,7 @@
 #include <algorithm>
 #include "eventmanager.h"
 #include "scene.h"
+#include "menulevel.h"
 #include <typeinfo>
 
 template <class manager_type> class Manager {
@@ -42,6 +43,9 @@ template <class manager_type> template <class data_type> void Manager<manager_ty
   objects[type] = new data_type;
   objects[type]->setWindowPointer(windowPointer);
   objects[type]->setEventManager(eventManager);
+  /*if(manager_type == MenuLevel) {
+    objects[type]->setMenuLevelManager(this.manager);
+  }*/
   objects[type]->create();
   objects[type]->name = type;
   current = objects[type];

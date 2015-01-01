@@ -10,6 +10,9 @@ void AnimationSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, i
   windowPointer = window;
   x_Pos = s_xPos;
   y_Pos = s_yPos;
+  color.r = s_color.x;
+  color.g = s_color.y;
+  color.b = s_color.z;
   x_Velocity = s_xVelocity;
   y_Velocity = s_yVelocity;
   textureFile = s_textureFile;
@@ -47,6 +50,11 @@ void AnimationSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, i
     sprite.setScale(scale, scale);
     sprite.setTextureRect(createRect());
     sprite.setPosition(x_Pos, y_Pos);
+    // sets color of the sprite
+    // to keep default color just enter values over 255
+    if(color.r <= 255 && color.g <= 255 && color.b <= 255) {
+      sprite.setColor(color);
+    }
   }
 
   setBoundaries<sf::Sprite>(sprite);

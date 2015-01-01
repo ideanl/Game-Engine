@@ -31,6 +31,7 @@ void ShapeSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s
 	if(textureFile == "circle") {
 		circle_shape.setRadius(width);
 		circle_shape.setFillColor(color);
+    circle_shape.setOrigin(s_width * .50, s_height * .50);
 		circle_shape.setPosition(x_Pos, y_Pos);
 		// sets the width and height of the global bounding rectangle
 		setBoundaries<sf::CircleShape>(circle_shape);
@@ -40,6 +41,7 @@ void ShapeSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s
 	else if(textureFile == "rectangle") {
 		rect_shape.setSize(sf::Vector2f(width, height));
 		rect_shape.setFillColor(color);
+    rect_shape.setOrigin(s_width * .50, s_height * .50);
 		rect_shape.setPosition(x_Pos, y_Pos);
 		// sets the width and height of the global bounding rectangle
 		setBoundaries<sf::RectangleShape>(rect_shape);
