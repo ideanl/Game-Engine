@@ -22,6 +22,7 @@ void AnimationSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, i
   columns = static_cast<AnimationConfig*>(config)->getColumns();
   rows = static_cast<AnimationConfig*>(config)->getRows();
   always_moving = static_cast<AnimationConfig*>(config)->getAlwaysMoving();
+  pauses = static_cast<AnimationConfig*>(config)->getPauses();
   default_index = static_cast<AnimationConfig*>(config)->getDefaultIndex();
   frame_width = s_width;
   frame_height = s_height;
@@ -62,7 +63,8 @@ void AnimationSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, i
 
 void AnimationSprite::update() {
   if (!always_moving && !curr_moving) {
-    index = default_index;
+    if (!pauses)
+      index = default_index;
   } else {
     index += animationSpeed;
     if (index > total_frames) index = 0;
@@ -79,24 +81,7 @@ sf::IntRect AnimationSprite::createRect() {
   return sf::IntRect(sx, sy, frame_width, frame_height);
 }
 
-// checks for events
-void AnimationSprite::checkEvent() {
-
-}
-
-// draws the sprite
-void AnimationSprite::render() {
-  windowPointer->draw(sprite);
-}
-
-// sets position of the sprite
-void AnimationSprite::setPosition(int s_xPos, int s_yPos) {
-  sprite.setPosition(s_xPos, s_yPos);
-  x_Pos = s_xPos;
-  y_Pos = s_yPos;
-}
-
-// moves the sprite along the horizongal axis
+// moves the sprite along the vertical axis
 void AnimationSprite::move_x(int s_xPos) {
   while(x_Pos < s_xPos) {
     sprite.move(x_Velocity, 0);
@@ -124,3 +109,23 @@ void AnimationSprite::move_y(bool isMoving) {
   }
 }
 
+// checks for events
+void AnimationSprite::checkEvent() {
+
+}
+
+// draws the sprite
+void AnimationSprite::render() {
+  windowPointer->draw(sprite);
+}
+
+// sets position of the sprite
+void AnimationSprite::setPosition(int s_xPos, int s_yPos) {
+  sprite.setPosition(s_xPos, s_yPos);
+  x_Pos = s_xPos;
+  y_Pos = s_yPos;
+}
+
+bool AnimationSprite::end() {
+  return floor(index) == total_frames - 1;
+}

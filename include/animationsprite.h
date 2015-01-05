@@ -26,6 +26,8 @@ class AnimationSprite :public BaseSprite {
     void move_y(bool isMoving);
     bool curr_moving = false;
 
+    bool end();
+
   protected:
     sf::Texture texture;
     sf::Sprite sprite;
@@ -40,6 +42,7 @@ class AnimationSprite :public BaseSprite {
     int frame_height;
     int total_frames;
     bool always_moving;
+    bool pauses;
     float index;
     float default_index;
     sf::IntRect createRect();
