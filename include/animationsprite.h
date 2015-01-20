@@ -24,6 +24,8 @@ class AnimationSprite :public BaseSprite {
     // moves the sprite along the vertical axis
     void move_y(int s_yPos);
     void move_y(bool isMoving);
+    // flips the sprite
+    void flip(bool isFlipped);
     bool curr_moving = false;
 
     bool end();
@@ -45,6 +47,7 @@ class AnimationSprite :public BaseSprite {
     bool pauses;
     float index;
     float default_index;
+    bool isFlipped;
     sf::IntRect createRect();
 };
 

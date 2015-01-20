@@ -97,10 +97,13 @@ void ImageSprite::move_y(bool isMoving) {
 // flips the sprite
 void ImageSprite::flip(bool isFlipped) {
   if(isFlipped == true) {
+    this->isFlipped = true;
     sprite.setScale(-scale, scale);
   }
-  else
+  else {
+    this->isFlipped = false;
     sprite.setScale(scale, scale);
+  }
 }
 
 // checks for events

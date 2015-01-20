@@ -33,17 +33,17 @@ void AnimationSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, i
     std::cerr << "Failed to load" << textureFile << std::endl;
   } else {
       // if too big
-      if(texture.getSize().x > s_width || texture.getSize().y > s_height) {
-        scale = static_cast<float>(s_width) / texture.getSize().x;
-        if(scale < static_cast<float>(s_height) / texture.getSize().y) {
-          scale = static_cast<float>(s_height) / texture.getSize().y;
+      if(texture.getSize().x > s_width*columns || texture.getSize().y > s_height*rows) {
+        scale = static_cast<float>(s_width) * columns / texture.getSize().x;
+        if(scale < static_cast<float>(s_height) * rows / texture.getSize().y) {
+          scale = static_cast<float>(s_height) * rows / texture.getSize().y;
         }
       }  
       // if too small
-      else if(texture.getSize().x < s_width || texture.getSize().y < s_height) {
-        scale = static_cast<float>(texture.getSize().x) / s_width;
-        if(scale > static_cast<float>(texture.getSize().y) / s_height) {
-          scale = static_cast<float>(texture.getSize().y) / s_height;
+      else if(texture.getSize().x < s_width*columns || texture.getSize().y < s_height*rows) {
+        scale = static_cast<float>(texture.getSize().x) * columns / s_width;
+        if(scale > static_cast<float>(texture.getSize().y) * rows / s_height) {
+          scale = static_cast<float>(texture.getSize().y) * rows / s_height;
         }
       }
     texture.setSmooth(true);
@@ -69,16 +69,15 @@ void AnimationSprite::update() {
     index += animationSpeed;
     if (index > total_frames) index = 0;
   }
-
   sprite.setTextureRect(createRect());
 }
 
 sf::IntRect AnimationSprite::createRect() {
   int row = floor(floor(index) / columns);
   int column = static_cast<int>(floor(index)) % columns;
-  int sx = column * frame_width;
-  int sy = row * frame_height;
-  return sf::IntRect(sx, sy, frame_width, frame_height);
+  int sx = column * frame_width; 
+  int sy = row * frame_height;  
+  return sf::IntRect(sx, sy, frame_width * scale, frame_height * scale);
 }
 
 // moves the sprite along the vertical axis
@@ -128,4 +127,16 @@ void AnimationSprite::setPosition(int s_xPos, int s_yPos) {
 
 bool AnimationSprite::end() {
   return floor(index) == total_frames - 1;
+}
+
+// flips the sprite
+void AnimationSprite::flip(bool isFlipped) {
+  if(isFlipped == true) {
+    this->isFlipped = true;
+    sprite.setScale(-scale, scale);
+  }
+  else {
+    this->isFlipped = false;
+    sprite.setScale(scale, scale);
+  }
 }

@@ -37,6 +37,7 @@ class ImageSprite :public BaseSprite {
 	  sf::Sprite sprite;
 	  sf::Transformable* spritePointer;
     float scale;
+    bool isFlipped;
   private:
   	sf::Sprite* spriteAddress;
 };
