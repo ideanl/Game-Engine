@@ -28,7 +28,7 @@ void StartScene::create() {
   door->create(windowPointer, 120, 50, 0, 0, 350, 540, sf::Vector3f(0, 0, 0), "door.png", "", "", door_config);
 
   SpriteConfig* main_character_config = new AnimationConfig(0.3, 10, 4, 3, false, false, 6);
-  static_cast<AnimationSprite*>(sprites["main_character"])->create(windowPointer, 0, 0, 0, 0, 719, 450, sf::Vector3f(0, 0, 0), "main_character.png", "", "", main_character_config);
+  static_cast<AnimationSprite*>(sprites["main_character"])->create(windowPointer, 0, 0, 0, 0, 402, 445, sf::Vector3f(0, 0, 0), "main_character.png", "", "", main_character_config);
 
   eventManager->addKey(sf::Keyboard::Left, [this] () { static_cast<AnimationSprite*>(sprites["main_character"])->curr_moving = true; } );
   eventManager->addKey(sf::Keyboard::Left, [this] () { static_cast<AnimationSprite*>(sprites["main_character"])->curr_moving = false; }, "released");
