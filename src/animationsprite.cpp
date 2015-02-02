@@ -49,6 +49,7 @@ void AnimationSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, i
     texture.setSmooth(true);
     sprite.setTexture(texture);
     sprite.setScale(scale, scale);
+    //sprite.setOrigin(sprite.getTexture()->getSize().x * scale * .50, sprite.getTexture()->getSize().y * scale * .50);
     sprite.setTextureRect(createRect());
     sprite.setPosition(x_Pos, y_Pos);
     // sets color of the sprite
@@ -129,9 +130,8 @@ bool AnimationSprite::end() {
   return floor(index) == total_frames - 1;
 }
 
-// flips the sprite
 void AnimationSprite::flip(bool isFlipped) {
-  if(isFlipped == true) {
+  if(isFlipped = true) {
     this->isFlipped = true;
     sprite.setScale(-scale, scale);
   }
