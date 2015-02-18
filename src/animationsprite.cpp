@@ -49,9 +49,9 @@ void AnimationSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, i
     texture.setSmooth(true);
     sprite.setTexture(texture);
     sprite.setScale(scale, scale);
-    //sprite.setOrigin(sprite.getTexture()->getSize().x * scale * .50, sprite.getTexture()->getSize().y * scale * .50);
+    sprite.setOrigin(sprite.getTexture()->getSize().x * scale * .50, sprite.getTexture()->getSize().y * scale * .50);
     sprite.setTextureRect(createRect());
-    sprite.setPosition(x_Pos, y_Pos);
+    sprite.setPosition(sprite.getOrigin().x - x_Pos, sprite.getOrigin().y - y_Pos);
     // sets color of the sprite
     // to keep default color just enter values over 255
     if(color.r <= 255 && color.g <= 255 && color.b <= 255) {

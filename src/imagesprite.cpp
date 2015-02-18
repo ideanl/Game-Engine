@@ -47,7 +47,7 @@ void ImageSprite::create(sf::RenderWindow* window, int s_xPos, int s_yPos, int s
 	  sprite.setTexture(texture);
     sprite.setScale(scale, scale);
     sprite.setOrigin(sprite.getTexture()->getSize().x * scale * .50, sprite.getTexture()->getSize().y * scale * .50);
-    sf::IntRect textureRect(s_xPos, s_yPos, s_width, s_height);
+    sf::IntRect textureRect(s_xPos - sprite.getTexture()->getSize().x / 2, s_yPos - sprite.getTexture()->getSize().y / 2, s_width * 2, s_height * 2);
     sprite.setTextureRect(textureRect);
     // sets color of the sprite
     // to keep default color just enter values over 255
